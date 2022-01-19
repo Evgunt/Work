@@ -1,0 +1,98 @@
+{% load static %}
+{% load thumbnail %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script type="text/javascript" src="{% static 'js/jquery.min.js'%}"></script>
+	<script type="text/javascript" src="{% static 'js/owl.carousel.min.js'%}"></script>
+	<script type="text/javascript" src="{% static 'js/main.js'%}"></script>
+
+	<link rel="icon" type="image/png" href="{% static 'favicon.ico'%}">
+
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/owl.theme.green.min.css' %}" type="text/css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    <title>Велокрюк</title>
+</head>
+<body>
+
+    
+    <div class="center">
+        <header>
+            <div class="logo_container">
+                <img src="{% static 'img/logo.png'%}" class="logo" alt="logo">
+                <div class="under_title">Серия настенных держателей</div>
+            </div>
+        </header>
+        <main>
+            <section class="slider owl-carousel" id="mainSlide">
+                {% if slider %}
+                    {% for slid in slider%}
+                        <div class="slider_item" style="background: url({% thumbnail slid.image 'slider' %}) center center no-repeat; background-size: cover">
+                            <div class="slider_item__dark"></div>
+                            <div class="slider_item_block">
+                                <div class="slider_item_block__title">{{slid.title}}</div>
+                                <div class="slider_item_block__text">{{slid.content}}</div>
+                            </div>
+                        </div>
+                    {%endfor%}
+                {% endif%}
+            </section>
+            <section class="block first_block">
+                <div class="block_title">{{first.title}}</div>
+                <div class="block_text">{{first.content | safe}}</div>
+            </section>
+            <section class="gallery slider_gal owl-carousel" id="gallerySlide">
+                {% if gallery %}
+                    {% for img in gallery%}
+                         <img class="gallery_img" src="{% thumbnail img.image 'gallery' %}" alt="{{img.alt}}">
+                    {%endfor%}
+                {% endif%}
+            </section>
+            <section class="products">
+                {% if services %}
+                    {% for service in services%}
+                         <div class="products_items">
+                             <div class="products_left">
+                                <div class="items_slider owl-carousel" data-id="{{service.id}}">
+                                    {% for img in service.ais%}
+                                        <img src="{% thumbnail img.image 'item' %}" alt="{{img.image}}">
+                                    {%endfor%}
+                                </div>
+                                <div class="products_title" data-id="{{service.id}}">{{service.title}}</div>
+                                <div class="products_price">{{service.price}} руб.</div>
+                            </div>
+                             <div class="products_content">{{service.content | safe}}</div>
+                        </div>
+                    {%endfor%}
+                {% endif%}
+            </section>
+             {% if pages %}
+                {% for page in pages%}
+                    <section class="block">
+                        <div class="block_title">{{page.title}}</div>
+                        <div class="block_text">{{page.content | safe}}</div>
+                    </section>
+                {%endfor%}
+            {% endif%}
+        </main>
+        <footer>
+            <img src="{% static 'img/logo.png'%}" alt="logo" class="logo">
+            <div class="footerText">Томск {{year}}г.</div>
+            <div class="footerText footerText-hide">
+                <span>велокрюк.рф</span>
+                velokruk.ru
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
