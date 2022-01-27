@@ -1,4 +1,4 @@
-$(document).ready(function() {
+window.addEventListener("load", function(event) {
 	$("#mainSlide").owlCarousel({
 		items:1,
 		loop:true,
@@ -15,40 +15,55 @@ $(document).ready(function() {
 		margin:5,
 		nav:true,
 		dots:false,
-		autoWidth: 250
-		
-	});
-	$(".content_slider").owlCarousel({
-		items:5,
-		loop:true,
-		margin:5,
-		nav:true,
-		dots:false,
-		autoWidth: 200
-		
+		responsiveClass:true,
+		responsive:{
+			1340:{
+				items:5
+			},
+			1125:{
+				items:4
+			},
+			925:{
+				items:3
+			},
+			720:{
+				items:2
+			},
+			0:{
+				items:1
+			}
+
+		}
 	});
 	$(".items_slider").owlCarousel({
 		items:1,
-		loop:true,
-		margin:0,
+		loop:false,
+		margin:1,
 		nav:true,
-		dots:false,
-		autoWidth: 140
-		
+		dots:false
 	});
+	let move;
+	$('.gallery_img, .items_slider__img').mousedown(function(){
+		move = 1;
+	    $(this).mousemove(function(){
+			move = 0
+		})
+	});
+	$('.gallery_img, .items_slider__img').mouseup(function(){
+		if(move)
+		{
+		    if(($(this).hasClass('gallery_img') && innerWidth<720) || innerWidth<530) return 0;
 
-	$(document).mouseup(function (e) {
-		var container = $(".products_items_click");
-		if (container.has(e.target).length === 0){
-			container.hide();
+			let img = $(this).attr('data-main');
+			let alt = $(this).attr('alt');
+			$('.photo_big').html(' <img class="photo_big__img" src="/media/'+img+'" alt="'+alt+'">');
+			$('.photo_big').fadeIn(300);
+			$('body').css('overflow', 'hidden');
+
 		}
 	});
-
-	$('.products_title').on('click', function(){
-		$('.products_items_click').show(0);
-		
+	$('.photo_big').click(function(){
+	    $('.photo_big').fadeOut(300);
+		$('body').css("overflow",'auto');
 	});
-	$('.cross').click(function(){
-		$('.products_items_click').hide(0);
-	})
-});	
+});

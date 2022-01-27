@@ -24,13 +24,11 @@
     <title>Велокрюк</title>
 </head>
 <body>
-
-    
+    <div class="photo_big" style="display: none;"></div>
     <div class="center">
         <header>
             <div class="logo_container">
                 <img src="{% static 'img/logo.png'%}" class="logo" alt="logo">
-                <div class="under_title">Серия настенных держателей</div>
             </div>
         </header>
         <main>
@@ -54,7 +52,7 @@
             <section class="gallery slider_gal owl-carousel" id="gallerySlide">
                 {% if gallery %}
                     {% for img in gallery%}
-                         <img class="gallery_img" src="{% thumbnail img.image 'gallery' %}" alt="{{img.alt}}">
+                         <img class="gallery_img" src="{% thumbnail img.image 'gallery' %}" data-main="{{img.image}}" alt="{{img.alt}}">
                     {%endfor%}
                 {% endif%}
             </section>
@@ -65,11 +63,13 @@
                              <div class="products_left">
                                 <div class="items_slider owl-carousel" data-id="{{service.id}}">
                                     {% for img in service.ais%}
-                                        <img src="{% thumbnail img.image 'item' %}" alt="{{img.image}}">
+                                        <img src="{% thumbnail img.image 'item' %}" alt="{{img.image}}" data-main="{{img.image}}" class="items_slider__img">
                                     {%endfor%}
                                 </div>
                                 <div class="products_title" data-id="{{service.id}}">{{service.title}}</div>
-                                <div class="products_price">{{service.price}} руб.</div>
+                                {% if service.price != 0 %}
+                                    <div class="products_price">{{service.price}} руб.</div>
+                                {% endif %}
                             </div>
                              <div class="products_content">{{service.content | safe}}</div>
                         </div>
@@ -87,11 +87,6 @@
         </main>
         <footer>
             <img src="{% static 'img/logo.png'%}" alt="logo" class="logo">
-            <div class="footerText">Томск {{year}}г.</div>
-            <div class="footerText footerText-hide">
-                <span>велокрюк.рф</span>
-                velokruk.ru
-            </div>
         </footer>
     </div>
 </body>

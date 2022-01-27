@@ -22,9 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-1+7md4w)f790jzs31(_@s80ad45e6t-k#wj+9dqil=zx(bwldw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['evgunt.pythonanywhere.com']
 
 # Application definition
 
@@ -94,7 +94,7 @@ THUMBNAIL_ALIASES = {
             'crop': 'scale',
         },
         'item': {
-            'size': (140, 140),
+            'size': (300, 300),
             'crop': 'scale',
         },
         'gallery': {

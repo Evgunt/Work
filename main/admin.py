@@ -22,7 +22,7 @@ class servicesAdm(admin.ModelAdmin):
 
 
 class UserAdmin(admin.ModelAdmin):
-    fields = ['email', ('first_name', 'last_name')]
+    fields = ['email', ('first_name', 'last_name'), ]
 
     def has_add_permission(self, request):
         return False

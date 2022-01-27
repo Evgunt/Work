@@ -33,7 +33,7 @@ class services(models.Model):
 
 class photos(models.Model):
     parent = models.ForeignKey(services, related_name='photos', on_delete=models.CASCADE)
-    image = models.ImageField(blank=False, upload_to=get_timestamp_path, verbose_name='Изображение', default="", help_text="Минимальный размер 160x160px")
+    image = models.ImageField(blank=False, upload_to=get_timestamp_path, verbose_name='Изображение', default="", help_text="Минимальный размер 300x300px")
 
     class Meta:
         verbose_name_plural = 'Изображения товара'
