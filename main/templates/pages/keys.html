@@ -1,0 +1,209 @@
+{% extends "basic.html" %}
+{% load static%}
+{% block content %}
+<div class="dark_errors">
+    <div class="errors_container" id="key_edit">
+        <div class="errors_container_titles clearfix">
+            <div class="errors_container_title">Ceramic 3D</div>
+            <div class="errors_container_cross"></div>
+        </div>
+        <div class="key_info clearfix">
+            <div class="key_info_item" data-type="num"></div>
+            <div class="key_info_item" data-type="name"></div>
+            <div class="key_info_item" data-type="tariff"></div>
+            <div class="key_info_item" data-type="date"></div>
+        </div>
+        
+        {% for tarif in tariffs%}
+        {% if tarif.name != "Отсутствует" %}
+        <div class="tarif clearfix" data-hide="{{tarif.name}}">
+            <div class="tarif_dop_info">
+                <div class="tarif_icon" data-ind="{{tarif.pk}}"></div>
+                <div class="tarif_dop_info_item" data-ind="{{tarif.pk}}">
+                    <div class="clearfix">
+                        <div class="tarif_dop_info_title">
+                            <div class="above_title">Тариф</div>
+                            {{tarif.name}}
+                        </div>
+                        <div class="tarif_price clearfix">
+                            <div class="tarif_price_num">{{tarif.price1}}</div>
+                            <div class="tarif_price_text">₽/мес.</div>
+                        </div>
+                    </div>
+                    <div class="tarif_benefits">
+                        {{tarif.content | safe}}
+                    </div>
+                </div>
+            </div>
+            <div class="tarif_title">{{tarif.name}}</div>
+            <div class="tarif_butts tarif_butts-selected" data-price="{{tarif.price1}}" data-col="1">1 месяц</div>
+            <div class="tarif_butts" data-price="{{tarif.price2}}" data-col="3">3 месяца</div>
+            <div class="tarif_butts" data-price="{{tarif.price3}}" data-col="12">12 месяцев</div>
+            <div class="tarif_info">
+                <div class="tarif_info_price">{{tarif.price1}} <span>₽</span></div>
+                <div class="tarif_info_date">{{first_date}}</div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <div class="tarif_text">Повысить тариф с сегодняшней даты</div>
+        <div class="tarif_butt">
+            <input type='checkbox' checked class='tarif_butt-switch' id='checkbox-1'>
+            <label for='checkbox-1'></label>
+        </div>
+        <div class="tarif_submit">ПОДТВЕРДИТЬ</div>
+    </div>
+    <div class="errors_container" id="add_key_form">
+        <div class="errors_container_titles clearfix">
+            <div class="errors_container_title">Ceramic 3D</div>
+            <div class="errors_container_cross"></div>
+        </div>
+        <div class="errors_container_margin">
+            <label for="key">
+                <input type="text" name="key" placeholder="Номер ключа" class="inputMain" required id="key_add_input">
+                <div class="help_text" id="key_errors" style="display: none;">Несуществующий ключ</div>
+            </label>
+        </div>
+        <div class="errors_container_butt key_add_butt" id="key_add_butt">Получить код</div>
+    </div>
+    <div class="errors_container" id="code">
+        <div class="errors_container_titles clearfix">
+            <div class="errors_container_title">Ceramic 3D</div>
+            <div class="errors_container_cross"></div>
+        </div>
+        <div class="errors_container_margin">
+            <div class="text_for_code">Для добавления ключа необходимо
+                получить проверочный код, который
+                отобразится в программе
+                с соответствующим ключом</div>
+            <label for="key">
+                <input type="text" name="key" placeholder="Проверочный код" class="inputMain" required>
+            </label>
+        </div>
+        <div class="errors_container_butt key_add_butt" id="get_key">ОТПРАВИТЬ</div>
+    </div>
+    <div class="errors_container" id="form_get_key">
+        <div class="errors_container_titles clearfix">
+            <div class="errors_container_title">Ceramic 3D</div>
+            <div class="errors_container_cross"></div>
+        </div>
+        <div class="sucsess clearfix">
+            <div class="sucsess_text">Ключ добавлен</div>
+            <div class="sucsess_icon"></div>
+        </div>
+    </div>
+    <div class="errors_container" id="delete_key_form">
+        <div class="errors_container_titles clearfix">
+            <div class="errors_container_title">Ceramic 3D</div>
+            <div class="errors_container_cross"></div>
+        </div>
+        <div class="errors_container_margin">
+            <div class="delete_key_text">Вы уверены?</div>
+            <div class="delete_key_butts clearfix">
+                <div class="delete_key_buts_item delete_key_buts_item-white">ДА</div>
+                <div class="delete_key_buts_item delete_key_buts_item-blue">НЕТ</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="center clearfix">
+    <nav class="page_left">
+        <div class="nav_item clearfix nav_item--active" data-id="1">
+            <div class="nav_item_img" style="background: url({% static 'media/key.png' %}) center center no-repeat; background-size: contain;"></div>
+            <div class="nav_item_name">Ключи</div>
+        </div>
+        <div class="nav_item clearfix" data-id="2">
+            <div class="nav_item_img" style="background: url({% static 'media/rek.png' %}) center center no-repeat; background-size: contain;"></div>
+            <div class="nav_item_name">Реквизиты</div>
+        </div>
+        <div class="nav_item clearfix">
+            <div class="nav_item_img" style="background: url({% static 'media/rubl.png' %}) center center no-repeat; background-size: contain;"></div>
+            <div class="nav_item_name">Счета</div>
+        </div>
+        <div class="nav_item clearfix">
+            <div class="nav_item_img" style="background: url({% static 'media/help.png' %}) center center no-repeat; background-size: contain;"></div>
+            <div class="nav_item_name">Помощь</div>
+        </div>
+        <div class="nav_item clearfix">
+            <div class="nav_item_img" style="background: url({% static 'media/profile.png' %}) center center no-repeat; background-size: contain;"></div>
+            <div class="nav_item_name">Профиль</div>
+        </div>
+        <a href="/logout" class="nav_item clearfix">
+            <div class="nav_item_img" style="background: url({% static 'media/exit.png' %}) center center no-repeat; background-size: contain;"></div>
+            <div class="nav_item_name">Выйти</div>
+        </a>
+    </nav>
+    <div class="page_right">
+        <section class="section_page" data-id="1">
+            <img class="page_logo" src="{% static 'media/logo.png' %}" alt="logo">
+            <div class="clear"></div>
+            <h1 class="page_title">мои ключи</h1>
+            <div class="kyes_butts">
+                <div class="kyes_butts_button kyes_butts_button--blue" id="add_key">ДОБАВИТЬ КЛЮЧ</div>
+                <div class="kyes_butts_button kyes_butts_button--white hidden_for_click" id="delete_keys_but">отвязать КЛЮЧ</div>
+                <div class="kyes_butts_button kyes_butts_button--orange">оплатить</div>
+            </div>
+            <div class="clear"></div>
+            <div class="tabel_kyes">
+                <div class="title_cell">
+                    <div class="cell_item title_cell_img">№ ключа</div>
+                    <div class="cell_item">Название</div>
+                    <div class="cell_item">Тариф</div>
+                    <div class="cell_item">Работает до</div>
+                </div>
+                <div class="cell cell--green">
+                    <div class="cell_item cell_item_img cell_item_click" data-type="num">2F346958</div>
+                    <div class="cell_item cell_item_click" data-type="name">Радищева, 35</div>
+                    <div class="cell_item clearfix">
+                        <div class="cell_item_text" data-type="tariff">Премиум</div>
+                        <div class="cell_quest">
+                            <div class="icon_quest" data-ind="1"></div>
+                            <div class="cell_quest_dopInfo clearfix" data-ind="1">
+                                <div class="cell_quest_dopInfo_text">Тариф “Премиум” подключен до 25.02.2022 <br> После истечения срока доступен тариф “Стандарт”</div>
+                                <div class="cell_quest_dopInfo_icon"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cell_item">
+                        <div class="cell_item_text" data-type="date">25.02.2022</div>
+                        <div class="icon_edit"></div>
+                    </div>
+                </div>
+                <div class="cell cell--green">
+                    <div class="cell_item cell_item_img cell_item_click" data-type="num">2F346959</div>
+                    <div class="cell_item cell_item_click" data-type="name">Крестинского, 44</div>
+                    <div class="cell_item clearfix">
+                        <div class="cell_item_text"  data-type="tariff">Стандарт</div>
+                        <div class="cell_quest">
+                            <div class="icon_quest" data-ind="2"></div>
+                            <div class="cell_quest_dopInfo clearfix" data-ind="2">
+                                <div class="cell_quest_dopInfo_text">Тариф “Стандарт” подключен до 09.04.2022 </div>
+                                <div class="cell_quest_dopInfo_icon"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cell_item">
+                        <div class="cell_item_text" data-type="date">09.04.2022</div>
+                        <div class="icon_edit"></div>
+                    </div>
+                </div>
+                <div class="cell cell--red">
+                    <div class="cell_item cell_item_img cell_item_click" data-type="num">2F346960</div>
+                    <div class="cell_item cell_item_click" data-type="name">Белинского, 105</div>
+                </div>
+                <div class="cell cell--red">
+                    <div class="cell_item cell_item_img cell_item_click" data-type="num">2F346961</div>
+                    <div class="cell_item cell_item_click" data-type="name">Решетникова, 22а</div>
+                </div>
+                {% for key in list_keys %}
+                    <div class="cell cell--red">
+                        <div class="cell_item cell_item_img cell_item_click" data-type="num">{{key.number}}</div>
+                        <div class="cell_item cell_item_click" data-type="name">{{key.name}}</div>
+                    </div>
+                {%endfor%}
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}

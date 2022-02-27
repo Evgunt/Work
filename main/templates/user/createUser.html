@@ -1,0 +1,53 @@
+{% extends "basic.html" %}
+{% load static %}
+{% block content %}
+<div class="center clearfix">
+    <img class="main_left" src="{% static 'media/main_img.png' %}" alt="mainImg">
+    <div class="main_right">
+        <img class="main_logo" src="{% static 'media/logo.png' %}" alt="logo">
+        <div class="main_right_title">Облачный рендер Ceramic 3D<span>Личный кабинет</span></div>
+        <form class="mainForm" method="POST" id="registr">
+            {% csrf_token %}
+            <div class="two_titles clearfix">
+                <div class="form_title">Регистрация</div>
+                <a href="/" class="back_butt" id="auth">Авторизоваться</a>
+            </div>
+            <label for="key">
+                <input type="text" id="key" name="key" placeholder="Ключ" class="inputMain" required>
+                <div class="help_text">{{form.errors.key}}</div>
+            </label>
+            <label for="username">
+                <input type="email" id="username" name="username" placeholder="Почта" class="inputMain" required>
+                <div class="help_text">{{form.errors.username}}</div>
+            </label>
+            <label for="password">
+                <input type="password" id="password" name="password" placeholder="Пароль" class="inputMain" required>
+                <div class="eye_input"></div>
+                <div class="help_text">{{form.errors.password}}</div>
+            </label>
+            <label for="password2">
+                <input type="password" id="password2" name="password2" placeholder="Повторите пароль" class="inputMain" required>
+                <div class="eye_input"></div>
+                <div class="help_text">{{form.errors.password2}}</div>
+            </label>
+            <label for="first_name">
+                <input type="text" id="first_name" name="first_name" placeholder="Ф.И.О." class="inputMain" required>
+            </label>
+            <input type="submit" value="ЗАРЕГИСТРИРОВАТЬСЯ" class="formButt" id="createusBut" disabled>
+                <label class="checkbox_container" for="personal">
+                    Нажимая на кнопку “Продолжить регистрацию”, я даю согласие на
+                    обработку персональных данных и соглашаюсь с условиями
+                    <a href="#">обработки персональных данных</a>
+                    <input type="checkbox" name="personal" required id="personal">
+                    <span class="checkmark"></span>
+                </label>
+        </form>
+        <div class="contact_text">
+            <div class="contact_phone">+7 (495) 215-24-47</div>
+            info@ceramic3d.ru<br>
+            г. Екатеринбург, проезд<br>
+            Решетникова 22а, оф. 410<br>
+        </div>
+    </div>
+</div>
+{% endblock %}

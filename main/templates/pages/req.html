@@ -1,0 +1,86 @@
+{% extends "basic.html" %}
+{% load static%}
+{% block content %}
+<div class="center clearfix">
+    <nav class="page_left">
+        <div class="nav_item clearfix nav_item--active" data-id="1">
+            <div class="nav_item_img" style="background: url({% static 'media/key.png' %}) center center no-repeat; background-size: contain;"></div>
+            <div class="nav_item_name">Ключи</div>
+        </div>
+        <div class="nav_item clearfix" data-id="2">
+            <div class="nav_item_img" style="background: url({% static 'media/rek.png' %}) center center no-repeat; background-size: contain;"></div>
+            <div class="nav_item_name">Реквизиты</div>
+        </div>
+        <div class="nav_item clearfix">
+            <div class="nav_item_img" style="background: url({% static 'media/rubl.png' %}) center center no-repeat; background-size: contain;"></div>
+            <div class="nav_item_name">Счета</div>
+        </div>
+        <div class="nav_item clearfix">
+            <div class="nav_item_img" style="background: url({% static 'media/help.png' %}) center center no-repeat; background-size: contain;"></div>
+            <div class="nav_item_name">Помощь</div>
+        </div>
+        <div class="nav_item clearfix">
+            <div class="nav_item_img" style="background: url({% static 'media/profile.png' %}) center center no-repeat; background-size: contain;"></div>
+            <div class="nav_item_name">Профиль</div>
+        </div>
+        <a href="/logout" class="nav_item clearfix">
+            <div class="nav_item_img" style="background: url({% static 'media/exit.png' %}) center center no-repeat; background-size: contain;"></div>
+            <div class="nav_item_name">Выйти</div>
+        </a>
+    </nav>
+    <div class="page_right">
+        <section class="section_page" data-id="2" style="display: none;">
+            <img class="page_logo" src="{% static 'media/logo.png' %}" alt="logo">
+            <div class="clear"></div>
+            <h1 class="page_title">Реквизиты</h1>
+            <div class="kyes_butts">
+                <div class="kyes_butts_button kyes_butts_button--orange">Добавить реквизиты</div>
+                <select class="filter_select">
+                    <option value="1">все реквизиты</option>
+                    <option value="2">все реквизиты</option>
+                    <option value="3">все реквизиты</option>
+                </select>
+                <select class="filter_select">
+                    <option value="1">активные</option>
+                    <option value="1">активные</option>
+                    <option value="1">активные</option>
+                </select>
+            </div>
+            <div class="req">
+                <div class="req_item clearfix">
+                    <div class="req_item_icon">И</div>
+                    <div class="req_item_info">
+                        <div class="req_item_title">ИП Рак Иван Геннадьевич</div>
+                        <div class="req_item_text">2021/11/22-574198-adv</div>
+                    </div>
+                    <div class="req_item_right clearfix">
+                        <div class="req_item_right_text">Основной</div>
+                        <div class="req_item_right_icon">?</div>
+                        <div class="req_item_right_moreIcon">
+                            <div class="req_item_right_moreIcon_circol"></div>
+                            <div class="req_item_right_moreIcon_circol"></div>
+                            <div class="req_item_right_moreIcon_circol"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="req_item clearfix">
+                    <div class="req_item_icon">И</div>
+                    <div class="req_item_info">
+                        <div class="req_item_title">ИП Рак Иван Геннадьевич</div>
+                        <div class="req_item_text">2021/11/22-574198-adv</div>
+                    </div>
+                    <div class="req_item_right clearfix">
+                        <div class="req_item_right_text">Основной</div>
+                        <div class="req_item_right_icon">?</div>
+                        <div class="req_item_right_moreIcon">
+                            <div class="req_item_right_moreIcon_circol"></div>
+                            <div class="req_item_right_moreIcon_circol"></div>
+                            <div class="req_item_right_moreIcon_circol"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}
