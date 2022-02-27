@@ -76,9 +76,10 @@
                 получить проверочный код, который
                 отобразится в программе
                 с соответствующим ключом</div>
-            <label for="key">
-                <input type="text" name="key" placeholder="Проверочный код" class="inputMain" required>
+            <label for="code_add_input">
+                <input type="text" name="key" id="code_add_input" placeholder="Проверочный код" class="inputMain" required>
             </label>
+            <div class="help_text" id="code_errors" style="display: none;">Неверный код</div>
         </div>
         <div class="errors_container_butt key_add_butt" id="get_key">ОТПРАВИТЬ</div>
     </div>
@@ -100,8 +101,9 @@
         <div class="errors_container_margin">
             <div class="delete_key_text">Вы уверены?</div>
             <div class="delete_key_butts clearfix">
-                <div class="delete_key_buts_item delete_key_buts_item-white">ДА</div>
-                <div class="delete_key_buts_item delete_key_buts_item-blue">НЕТ</div>
+                <input type="hidden" name="delKeys" id="delKeys">
+                <div class="delete_key_buts_item delete_key_buts_item-white" id="del_yes">ДА</div>
+                <div class="delete_key_buts_item delete_key_buts_item-blue" id="not_del">НЕТ</div>
             </div>
         </div>
     </div>
@@ -109,14 +111,14 @@
 </div>
 <div class="center clearfix">
     <nav class="page_left">
-        <div class="nav_item clearfix nav_item--active" data-id="1">
+        <a href="{% url 'main:key' %}" class="nav_item clearfix nav_item--active" data-id="1">
             <div class="nav_item_img" style="background: url({% static 'media/key.png' %}) center center no-repeat; background-size: contain;"></div>
             <div class="nav_item_name">Ключи</div>
-        </div>
-        <div class="nav_item clearfix" data-id="2">
+        </a>
+        <a href="{% url 'main:req' %}" class="nav_item clearfix" data-id="2">
             <div class="nav_item_img" style="background: url({% static 'media/rek.png' %}) center center no-repeat; background-size: contain;"></div>
             <div class="nav_item_name">Реквизиты</div>
-        </div>
+        </a>
         <div class="nav_item clearfix">
             <div class="nav_item_img" style="background: url({% static 'media/rubl.png' %}) center center no-repeat; background-size: contain;"></div>
             <div class="nav_item_name">Счета</div>

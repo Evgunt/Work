@@ -8,11 +8,11 @@ admin.site.site_header = 'Панель администрирования Cerami
 
 
 class UserAdmin(admin.ModelAdmin):
-    # fields = [('email', 'phone'), 'first_name',  'send_messages',
-    #           ('region', 'time', 'language')]
+    fields = [('email', 'phone'), 'first_name',  'send_messages',
+              ('region', 'time', 'language')]
 
-    # def has_add_permission(self, request):
-    #     return False
+    def has_add_permission(self, request):
+        return False
 
     def get_queryset(self, request):
         qs = super().get_queryset(request)

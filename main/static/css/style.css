@@ -395,12 +395,6 @@ body, html, main
     float: left;
     height: 100%;
 }
-.page_left a
-{
-    color: #fff;
-    display: block;
-    text-decoration: none;
-}
 .nav_item
 {
     border-radius: 5px 0 0 5px;
@@ -411,6 +405,9 @@ body, html, main
     -o-transition: all 0.4s;
     transition: all 0.4s;
     cursor: pointer;
+    display: block;
+    text-decoration: none;
+    color: #fff;
 }
 .nav_item:hover
 {
@@ -1105,4 +1102,8 @@ input[type="checkbox"].tarif_butt-switch:checked + label:before {
 .req_item_right_moreIcon_circol:nth-last-child(1)
 {
     margin-right: 0;
+}
+#key_errors, #code_errors
+{
+    margin-bottom: 7px;
 }

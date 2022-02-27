@@ -3,14 +3,14 @@
 {% block content %}
 <div class="center clearfix">
     <nav class="page_left">
-        <div class="nav_item clearfix nav_item--active" data-id="1">
+        <a href="{% url 'main:key' %}" class="nav_item clearfix">
             <div class="nav_item_img" style="background: url({% static 'media/key.png' %}) center center no-repeat; background-size: contain;"></div>
             <div class="nav_item_name">Ключи</div>
-        </div>
-        <div class="nav_item clearfix" data-id="2">
+        </a>
+        <a href="{% url 'main:req' %}" class="nav_item clearfix nav_item--active">
             <div class="nav_item_img" style="background: url({% static 'media/rek.png' %}) center center no-repeat; background-size: contain;"></div>
             <div class="nav_item_name">Реквизиты</div>
-        </div>
+        </a>
         <div class="nav_item clearfix">
             <div class="nav_item_img" style="background: url({% static 'media/rubl.png' %}) center center no-repeat; background-size: contain;"></div>
             <div class="nav_item_name">Счета</div>
@@ -29,7 +29,7 @@
         </a>
     </nav>
     <div class="page_right">
-        <section class="section_page" data-id="2" style="display: none;">
+        <section class="section_page">
             <img class="page_logo" src="{% static 'media/logo.png' %}" alt="logo">
             <div class="clear"></div>
             <h1 class="page_title">Реквизиты</h1>

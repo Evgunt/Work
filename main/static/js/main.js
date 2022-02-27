@@ -99,18 +99,20 @@ $( document ).ready(function() {
         $('.tarif').removeClass('tarif_disabel');
         $('.tarif[data-hide="'+tarif+'"]').addClass('tarif_disabel');
     });
-    $('#get_key').click(function(){
-        $('#code').hide(0);
-        $('#form_get_key').fadeIn(300);
-    });
     $("#delete_keys_but").click(function(){
         if(!$(this).hasClass('hidden_for_click'))
         {
+            let vals = '';
+            $('.cell-active').each(function(){
+                vals += $(this).find('.cell_item[data-type="num"]').html()+';';
+            });
+            $('#delKeys').val(vals);
             $('#form_get_key').hide(0);
             $('#code').hide(0);
             $('#key_edit').hide(0);
             $('.dark_errors').fadeIn(300);
             $('#delete_key_form').fadeIn(0);
+
         }
     });
     let i=0;
@@ -162,26 +164,61 @@ $( document ).ready(function() {
         let key = $('#key_add_input').val();
         $.ajax({
             url: '/validateKey',
-            data: 'key='+key,
+            data: {'key': key, 'type': 1},
             dataType: "text",
             headers: {
                 "X-Requested-With": "XMLHttpRequest",
               },
             success: function (response) {
-
                 if(+response)
                 {
                     $('#key_errors').hide(0);
                     $('#add_key_form').hide(0);
                     $('#code').fadeIn(300);
                 }
-                else
-                {
-                    $('#key_errors').show(0);
-                }
+                else $('#key_errors').show(0);
             }
         });
     });
-
-
+    $('#get_key').click(function(){
+        let key = $('#key_add_input').val();
+        let check = $('#code_add_input').val();
+        $.ajax({
+            url: '/validateKey',
+            data: {'key': key, 'type': 0, 'check': check},
+            dataType: "text",
+            headers: {
+                "X-Requested-With": "XMLHttpRequest",
+              },
+            success: function (response) {
+                if(+response)
+                {
+                    $('#code').hide(0);
+                    $('#form_get_key').fadeIn(300);
+                }
+                else $('#code_errors').show(0);
+            }
+        });
+    });
+    $('#not_del').click(function(){
+        $('.dark_errors').fadeOut(300);
+    });
+    $('#del_yes').click(function(){
+        let kyes = $('#delKeys').val();
+        $.ajax({
+            url: '/dellKey',
+            data: {'delKeys': kyes},
+            dataType: "text",
+            headers: {
+                "X-Requested-With": "XMLHttpRequest",
+              },
+            success: function (response) {
+                if(+response)
+                {
+                   //ключь отвязан (figma)
+                }
+                else //ошибка
+            }
+        });
+    });
 });
