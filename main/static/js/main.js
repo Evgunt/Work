@@ -194,7 +194,11 @@ $( document ).ready(function() {
                 if(+response)
                 {
                     $('#code').hide(0);
+                    $('#form_get_key').find('.sucsess_text').html('Ключ добавлен');
                     $('#form_get_key').fadeIn(300);
+                    setTimeout(function(){
+                        location.reload()
+                    }, 2000);
                 }
                 else $('#code_errors').show(0);
             }
@@ -203,21 +207,27 @@ $( document ).ready(function() {
     $('#not_del').click(function(){
         $('.dark_errors').fadeOut(300);
     });
+
     $('#del_yes').click(function(){
         let kyes = $('#delKeys').val();
+        let keysAr = kyes.split(';');
+        let json = JSON.stringify(keysAr);
+        console.log(json);
         $.ajax({
-            url: '/dellKey',
-            data: {'delKeys': kyes},
+            url: '/validateKey',
+            data: {'delKeys': kyes, 'type': 2},
             dataType: "text",
             headers: {
                 "X-Requested-With": "XMLHttpRequest",
               },
             success: function (response) {
-                if(+response)
-                {
-                   //ключь отвязан (figma)
-                }
-                else //ошибка
+                $('#delete_key_form').fadeOut(300);
+                $('#form_get_key').find('.sucsess_text').html('Ключ отвязан от аккаунта');
+                $('#form_get_key').fadeIn(300);
+                console.log(response)
+                setTimeout(function(){
+                    location.reload()
+                }, 2000);
             }
         });
     });

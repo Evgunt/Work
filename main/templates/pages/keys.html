@@ -112,27 +112,27 @@
 <div class="center clearfix">
     <nav class="page_left">
         <a href="{% url 'main:key' %}" class="nav_item clearfix nav_item--active" data-id="1">
-            <div class="nav_item_img" style="background: url({% static 'media/key.png' %}) center center no-repeat; background-size: contain;"></div>
+            <div class="nav_item_img img_key"></div>
             <div class="nav_item_name">Ключи</div>
         </a>
         <a href="{% url 'main:req' %}" class="nav_item clearfix" data-id="2">
-            <div class="nav_item_img" style="background: url({% static 'media/rek.png' %}) center center no-repeat; background-size: contain;"></div>
+            <div class="nav_item_img img_req"></div>
             <div class="nav_item_name">Реквизиты</div>
         </a>
         <div class="nav_item clearfix">
-            <div class="nav_item_img" style="background: url({% static 'media/rubl.png' %}) center center no-repeat; background-size: contain;"></div>
+            <div class="nav_item_img img_rubl"></div>
             <div class="nav_item_name">Счета</div>
         </div>
         <div class="nav_item clearfix">
-            <div class="nav_item_img" style="background: url({% static 'media/help.png' %}) center center no-repeat; background-size: contain;"></div>
+            <div class="nav_item_img img_help"></div>
             <div class="nav_item_name">Помощь</div>
         </div>
         <div class="nav_item clearfix">
-            <div class="nav_item_img" style="background: url({% static 'media/profile.png' %}) center center no-repeat; background-size: contain;"></div>
+            <div class="nav_item_img img_profile"></div>
             <div class="nav_item_name">Профиль</div>
         </div>
         <a href="/logout" class="nav_item clearfix">
-            <div class="nav_item_img" style="background: url({% static 'media/exit.png' %}) center center no-repeat; background-size: contain;"></div>
+            <div class="nav_item_img img_logout"></div>
             <div class="nav_item_name">Выйти</div>
         </a>
     </nav>
@@ -154,54 +154,30 @@
                     <div class="cell_item">Тариф</div>
                     <div class="cell_item">Работает до</div>
                 </div>
-                <div class="cell cell--green">
-                    <div class="cell_item cell_item_img cell_item_click" data-type="num">2F346958</div>
-                    <div class="cell_item cell_item_click" data-type="name">Радищева, 35</div>
-                    <div class="cell_item clearfix">
-                        <div class="cell_item_text" data-type="tariff">Премиум</div>
-                        <div class="cell_quest">
-                            <div class="icon_quest" data-ind="1"></div>
-                            <div class="cell_quest_dopInfo clearfix" data-ind="1">
-                                <div class="cell_quest_dopInfo_text">Тариф “Премиум” подключен до 25.02.2022 <br> После истечения срока доступен тариф “Стандарт”</div>
-                                <div class="cell_quest_dopInfo_icon"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cell_item">
-                        <div class="cell_item_text" data-type="date">25.02.2022</div>
-                        <div class="icon_edit"></div>
-                    </div>
-                </div>
-                <div class="cell cell--green">
-                    <div class="cell_item cell_item_img cell_item_click" data-type="num">2F346959</div>
-                    <div class="cell_item cell_item_click" data-type="name">Крестинского, 44</div>
-                    <div class="cell_item clearfix">
-                        <div class="cell_item_text"  data-type="tariff">Стандарт</div>
-                        <div class="cell_quest">
-                            <div class="icon_quest" data-ind="2"></div>
-                            <div class="cell_quest_dopInfo clearfix" data-ind="2">
-                                <div class="cell_quest_dopInfo_text">Тариф “Стандарт” подключен до 09.04.2022 </div>
-                                <div class="cell_quest_dopInfo_icon"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cell_item">
-                        <div class="cell_item_text" data-type="date">09.04.2022</div>
-                        <div class="icon_edit"></div>
-                    </div>
-                </div>
-                <div class="cell cell--red">
-                    <div class="cell_item cell_item_img cell_item_click" data-type="num">2F346960</div>
-                    <div class="cell_item cell_item_click" data-type="name">Белинского, 105</div>
-                </div>
-                <div class="cell cell--red">
-                    <div class="cell_item cell_item_img cell_item_click" data-type="num">2F346961</div>
-                    <div class="cell_item cell_item_click" data-type="name">Решетникова, 22а</div>
-                </div>
                 {% for key in list_keys %}
-                    <div class="cell cell--red">
+                    {% if key.tariff.name == 'Отсутствует' %}
+                        <div class="cell cell--red">
+                    {% else %}
+                        <div class="cell cell--green">
+                    {% endif %}
                         <div class="cell_item cell_item_img cell_item_click" data-type="num">{{key.number}}</div>
                         <div class="cell_item cell_item_click" data-type="name">{{key.name}}</div>
+                        {% if key.tariff.name != "Отсутствует" %}
+                        <div class="cell_item clearfix">
+                            <div class="cell_item_text"  data-type="tariff">{{key.tariff}}</div>
+                            <div class="cell_quest">
+                                <div class="icon_quest" data-ind="{{key.pk}}"></div>
+                                <div class="cell_quest_dopInfo clearfix" data-ind="{{key.pk}}">
+                                    <div class="cell_quest_dopInfo_text">Тариф “{{key.tariff}}” подключен до {{key.date}} </div>
+                                    <div class="cell_quest_dopInfo_icon"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell_item">
+                            <div class="cell_item_text" data-type="date">{{key.date}}</div>
+                            <div class="icon_edit"></div>
+                        </div>
+                        {% endif %}
                     </div>
                 {%endfor%}
             </div>

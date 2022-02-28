@@ -421,11 +421,77 @@ body, html, main
 }
 .nav_item_img
 {
-    width: 30px;
+    width: 23px;
     height: 40px;
     margin-right: 20px;
     float: left;
     margin-top: -5px;
+}
+.img_key
+{
+    background: url('../media/key_white.png') center center no-repeat;
+    background-size: contain;
+    width: 32px;
+}
+.nav_item--active .img_key, .nav_item:hover .img_key
+{
+    background: url('../media/key.png') center center no-repeat;
+    background-size: contain;
+}
+.img_req
+{
+    background: url('../media/rek.png') center center no-repeat;
+    background-size: contain;
+}
+.nav_item--active .img_req, .nav_item:hover .img_req
+{
+    background: url('../media/rek_blue.png') center center no-repeat;
+    background-size: contain;
+
+}
+.img_rubl
+{
+    background: url('../media/rubl.png') center center no-repeat;
+    background-size: contain;
+}
+.nav_item--active .img_rubl, .nav_item:hover .img_rubl
+{
+    background: url('../media/rubl_blue.png') center center no-repeat;
+    background-size: contain;
+}
+.img_help
+{
+    background: url('../media/help.png') center center no-repeat;
+    background-size: contain;
+    width: 25px;
+}
+.nav_item--active .img_help, .nav_item:hover .img_help
+{
+    background: url('../media/help_blue.png') center center no-repeat;
+    background-size: contain;
+}
+.img_profile
+{
+    background: url('../media/profile.png') center center no-repeat;
+    background-size: contain;
+    width: 26px;
+}
+.nav_item--active .img_profile, .nav_item:hover .img_profile
+{
+    background: url('../media/profile_blue.png') center center no-repeat;
+    background-size: contain;
+}
+.img_logout
+{
+    background: url('../media/exit.png') center center no-repeat;
+    background-size: contain;
+    width: 25px;
+    margin-left: 4px;
+}
+.nav_item--active .img_logout, .nav_item:hover .img_logout
+{
+    background: url('../media/exit_blue.png') center center no-repeat;
+    background-size: contain;
 }
 .nav_item_name
 {

@@ -10,6 +10,5 @@ urlpatterns = [
    path('logout', views.logout.as_view(), name="logout"),
    path('registration', views.createUser.as_view(), name="createUser"),
    path('validateKey', views.validateKey, name='validateKey'),
-   path('dellKey', views.dellKey, name='dellKey'),
 
 ]

@@ -87,8 +87,8 @@ class key(LoginRequiredMixin, TemplateView):
         context['tariffs'] = models.tariffs.objects.all()
         current_time = datetime.now()
         day = current_time.strftime("%d")
-        month = int(current_time.strftime("%m"))+1
-        if month//10 == 0:
+        month = int(current_time.strftime("%m")) + 1
+        if month // 10 == 0:
             month = f'0{month}'
         year = current_time.strftime("%Y")
         context['first_date'] = f'{day}.{month}.{year}'
@@ -112,7 +112,7 @@ def validateKey(request):
                     context['success'] = 1
                 else:
                     context['success'] = 0
-            else:
+            elif typeQ == '0':
                 num = request.GET.get('key')
                 check = request.GET.get('check')
                 if models.keys.objects.filter(number=num, checkNum=check, owner='Отсутствует').exists():
@@ -122,23 +122,17 @@ def validateKey(request):
                     context['success'] = 1
                 else:
                     context['success'] = 0
+            elif typeQ == '2':
+                delKeys = request.GET.get('delKeys')
+                delKeys = delKeys.split(';')
+                context['success'] = delKeys
+                for dels in delKeys:
+                    context['success'] = dels
+                    if dels != '':
+                        if models.keys.objects.filter(number=dels).exists():
+                            kye = models.keys.objects.get(number=dels)
+                            user = models.AdvUser.objects.get(pk=6)
+                            kye.owner = user
+                            kye.save()
+                context['success'] = 1
     return render(request, 'user/validateKey.html', context)
-
-
-def dellKey(request):
-    context = {}
-    is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
-    if is_ajax:
-        if request.method == 'GET':
-            delKeys = request.GET.get('delKeys')
-            delKeys = delKeys.split(';')
-            for dels in delKeys:
-                if models.keys.objects.filter(number=dels).exists():
-                    kye = models.keys.objects.get(number=dels)
-                    user = models.user.objects.get(username='Отсутствует')
-                    kye.owner = user
-                    kye.save()
-                    context['success'] = 1
-                else:
-                    context['success'] = 0
-    return render(request, 'user/dellKey.html', context)

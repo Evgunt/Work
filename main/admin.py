@@ -19,8 +19,20 @@ class UserAdmin(admin.ModelAdmin):
         return qs.filter(~Q(username='root') & ~Q(username='Отсутствует'))
 
 
+class tarifModel(admin.ModelAdmin):
+
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        return qs.filter(~Q(name='Отсутствует'))
+
+
+class keysModel(admin.ModelAdmin):
+    fields = [('number', 'name'), ('tariff', 'date'),
+              'owner', 'checkNum']
+
+
 admin.site.unregister(Group)
 admin.site.register(models.AdvUser, UserAdmin)
-admin.site.register(models.keys)
-admin.site.register(models.tariffs)
+admin.site.register(models.keys, keysModel)
+admin.site.register(models.tariffs, tarifModel)
 
