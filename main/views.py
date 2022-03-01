@@ -1,15 +1,12 @@
-from itertools import count
-
+from django.core.signing import BadSignature
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView, LogoutView
-from django.core.exceptions import ValidationError
+from django.contrib.auth.views import LogoutView
 from datetime import datetime
-from django.shortcuts import render, redirect
-from django.views.generic import CreateView, FormView, TemplateView
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic import CreateView, TemplateView
 
-from . import forms, models
+from . import forms, models, utilities
 
 
 def loginUser(request):
@@ -54,6 +51,7 @@ def loginUser(request):
 class logout(LoginRequiredMixin, LogoutView):
     template_name = 'user/logout.html'
     login_url = '/'
+    next_page = '/'
 
 
 class createUser(CreateView):
@@ -71,10 +69,6 @@ class createUser(CreateView):
         tariff = models.tariffs.objects.get(pk=1)
         models.keys.objects.create(number=user.key, owner=userNow, tariff=tariff)
         return super().form_valid(form)
-
-
-def main(request):
-    return render(request, 'index.html')
 
 
 class key(LoginRequiredMixin, TemplateView):
@@ -136,3 +130,35 @@ def validateKey(request):
                             kye.save()
                 context['success'] = 1
     return render(request, 'user/validateKey.html', context)
+
+
+def password_email_form(request):
+    context = {}
+    if request.method == "POST":
+        username = request.POST['username']
+        if models.AdvUser.objects.filter(username=username).exists():
+            user = models.AdvUser.objects.get(username=username)
+            utilities.send_password_notification(user)
+            context['mail'] = "Проверьте почту"
+        else:
+            context['errors'] = "Введен неверный логин"
+    return render(request, 'user/password_email_form.html', context)
+
+
+def password_email(request, sign):
+    context = {}
+    username = utilities.signer.unsign(sign)
+    user = get_object_or_404(models.AdvUser, username=username)
+    if request.method == 'post':
+        password = request.POST['password']
+        password2 = request.POST['password2']
+        if password == password2:
+            user.set_password(password)
+            user.save()
+            template = 'user/password_change_email_done.html'
+        else:
+            context['errors'] = "Пароли не совпадают"
+    else:
+        template = 'user/password_change_email.html'
+
+    return render(request, template, context)

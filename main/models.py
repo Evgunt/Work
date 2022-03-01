@@ -47,3 +47,27 @@ class keys(models.Model):
 
     def __str__(self):
         return self.number
+
+
+class requisites(models.Model):
+    org = models.CharField(max_length=300, default="", blank=False, verbose_name='Тип организации')
+    inn = models.CharField(max_length=300, default="", blank=False, verbose_name='ИНН')
+    kpp = models.CharField(max_length=300, default="", blank=False, verbose_name='КПП')
+    company = models.CharField(max_length=300, default="", blank=False, verbose_name='Юридическое название организации')
+    adress = models.CharField(max_length=300, default="", blank=False, verbose_name='Юридический адрес')
+    contacts = models.CharField(max_length=300, default="", blank=False, verbose_name='Контактное лицо')
+    email = models.CharField(max_length=300, default="", blank=False, verbose_name='E-mail')
+    phone = models.CharField(max_length=300, default="", blank=False, verbose_name='Контактный телефон')
+    docs = models.CharField(max_length=300, default="", blank=False, verbose_name='Как будет забирать документы')
+    bank = models.CharField(max_length=300, default="", blank=False, verbose_name='Наименование банка')
+    checking = models.CharField(max_length=300, default="", blank=False, verbose_name='Расчетный счет')
+    bic = models.CharField(max_length=300, default="", blank=False, verbose_name='БИК')
+    checkingCo = models.CharField(max_length=300, default="", blank=False, verbose_name='Корреспондентский счет')
+    ogrn = models.CharField(max_length=300, default="", blank=False, verbose_name='ОГРН')
+
+    class Meta:
+        verbose_name_plural = 'Реквизиты'
+        verbose_name = 'Реквизит'
+
+    def __str__(self):
+        return self.company

@@ -105,6 +105,7 @@ body, html, main
     font-weight: 700;
     font-size: 17px;
     cursor: pointer;
+    text-transform: uppercase;
 }
 .formButt:disabled
 {
@@ -127,6 +128,8 @@ body, html, main
     -moz-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
+    display: block;
+    text-decoration: none;
 }
 .underButtText:hover, 
 .back_butt:hover

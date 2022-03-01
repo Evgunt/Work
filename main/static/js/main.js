@@ -231,4 +231,14 @@ $( document ).ready(function() {
             }
         });
     });
+    $('.cross_input').click(function(){
+        $(this).parent().find('input').val('');
+    });
+    $(".eye_input").click(function(){
+        let type =  $(this).parent().find("input").attr('type')
+        if (type == 'password')
+            $(this).parent().find("input").attr('type', "text")
+        else
+            $(this).parent().find("input").attr('type', "password")
+    });
 });
