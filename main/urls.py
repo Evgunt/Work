@@ -12,5 +12,7 @@ urlpatterns = [
    path('validateKey', views.validateKey, name='validateKey'),
    path('password_email/<str:sign>', views.password_email, name='password_email'),
    path('password_email_form', views.password_email_form, name='password_email_form'),
+   path('checks', views.checks.as_view(), name="checks"),
+   path('help', views.help.as_view(), name="help"),
 
 ]

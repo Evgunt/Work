@@ -241,4 +241,8 @@ $( document ).ready(function() {
         else
             $(this).parent().find("input").attr('type', "password")
     });
+    $('.tableCell[data-type="summ_js"]').each(function(){
+        let summ_js = parseInt($(this).html());
+        $(this).html(summ_js.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0}));
+    });
 });

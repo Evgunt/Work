@@ -46,3 +46,13 @@ class loginForm(forms.Form):
 
     class Meta:
         fields = ('username', 'password', 'key')
+
+
+class help_form(forms.Form):
+    title = forms.CharField(required=True)
+    email = forms.EmailField(required=True)
+    content = forms.CharField(required=True)
+    files = forms.FileField()
+
+    class Meta:
+        fields = ('title', 'email', 'content', 'files')

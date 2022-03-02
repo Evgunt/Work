@@ -119,19 +119,19 @@
             <div class="nav_item_img img_req"></div>
             <div class="nav_item_name">Реквизиты</div>
         </a>
-        <div class="nav_item clearfix">
+        <a href="{% url 'main:checks' %}" class="nav_item clearfix">
             <div class="nav_item_img img_rubl"></div>
             <div class="nav_item_name">Счета</div>
-        </div>
-        <div class="nav_item clearfix">
+        </a>
+        <a href="{% url 'main:help' %}" class="nav_item clearfix">
             <div class="nav_item_img img_help"></div>
             <div class="nav_item_name">Помощь</div>
-        </div>
+        </a>
         <div class="nav_item clearfix">
             <div class="nav_item_img img_profile"></div>
             <div class="nav_item_name">Профиль</div>
         </div>
-        <a href="/logout" class="nav_item clearfix">
+        <a href="{% url 'main:logout' %}" class="nav_item clearfix">
             <div class="nav_item_img img_logout"></div>
             <div class="nav_item_name">Выйти</div>
         </a>

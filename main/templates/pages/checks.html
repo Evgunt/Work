@@ -1,0 +1,63 @@
+{% extends "basic.html" %}
+{% load static%}
+{% block content %}
+<div class="center clearfix">
+    <nav class="page_left">
+        <a href="{% url 'main:key' %}" class="nav_item clearfix">
+            <div class="nav_item_img img_key"></div>
+            <div class="nav_item_name">Ключи</div>
+        </a>
+        <a href="{% url 'main:req' %}" class="nav_item clearfix">
+            <div class="nav_item_img img_req"></div>
+            <div class="nav_item_name">Реквизиты</div>
+        </a>
+        <a href="{% url 'main:checks' %}" class="nav_item clearfix nav_item--active">
+            <div class="nav_item_img img_rubl"></div>
+            <div class="nav_item_name">Счета</div>
+        </a>
+        <a href="{% url 'main:help' %}" class="nav_item clearfix">
+            <div class="nav_item_img img_help"></div>
+            <div class="nav_item_name">Помощь</div>
+        </a>
+        <div class="nav_item clearfix">
+            <div class="nav_item_img img_profile"></div>
+            <div class="nav_item_name">Профиль</div>
+        </div>
+        <a href="{% url 'main:logout' %}" class="nav_item clearfix">
+            <div class="nav_item_img img_logout"></div>
+            <div class="nav_item_name">Выйти</div>
+        </a>
+    </nav>
+    <div class="page_right">
+        <section class="section_page" data-id="3" style="display: block;">
+            <img class="page_logo" src="{% static 'media/logo.png' %}" alt="logo">
+            <div class="clear"></div>
+            <h1 class="page_title">Счета</h1>
+            <div class="mainTable">
+                <div class="tableAccountsFirst clearfix">
+                    <div class="tableCell">№ п/п</div>
+                    <div class="tableCell">№ счета</div>
+                    <div class="tableCell">Дата счета</div>
+                    <div class="tableCell">Сумма счета</div>
+                    <div class="tableCell">Статус</div>
+                    <div class="tableCell">Скачать счет</div>
+                    <div class="tableCell">Загрузить платежное поручение</div>
+                    <div class="tableCell">Скачать УПД</div>
+                </div>
+                {% for checks in object_list %}
+                <div class="tableAccountsSecond clearfix">
+                    <div class="tableCell">{{forloop.counter}}</div>
+                    <div class="tableCell">{{checks.num}}</div>
+                    <div class="tableCell">{{checks.date}}</div>
+                    <div class="tableCell" data-type="summ_js">{{checks.sum}}</div>
+                    <div class="tableCell">{{checks.status}}</div>
+                    <a href="#" class="tableCell tabelCellArrow"></a>
+                    <a href="#" class="tableCell tabelCellUnion"></a>
+                    <a href="#" class="tableCell tabelCellArrow"></a>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}

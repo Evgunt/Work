@@ -396,7 +396,7 @@ body, html, main
     padding: 95px 0 0 15px;
     color: #fff;
     float: left;
-    height: 100%;
+    min-height: 100%;
 }
 .nav_item
 {
@@ -505,6 +505,7 @@ body, html, main
 .page_right
 {
     padding: 45px;
+    padding-bottom: 0;
     float: right;
     width: 1170px;
 }
@@ -1175,4 +1176,300 @@ input[type="checkbox"].tarif_butt-switch:checked + label:before {
 #key_errors, #code_errors
 {
     margin-bottom: 7px;
+}
+.tableAccountsFirst {
+    font-weight: 300;
+    margin-top: 89px;
+    height: 92px;
+    margin-bottom: 11px;
+}
+.tableCell {
+    float: left;
+    margin-right: 25px;
+    text-align: center;
+    font-size: 20px;
+}
+.tableAccountsFirst .tableCell {
+    font-size: 20px;
+    color: #0E53A7;
+    text-align: center;
+}
+.tableCell:first-child {
+    width: 67px;
+}
+.tableCell:nth-child(2) {
+    width: 78px;
+}
+.tableCell:nth-child(3) {
+    width: 110px;
+}
+.tableCell:nth-child(4) {
+    width: 167px;
+}
+.tableCell:nth-child(5) {
+    width: 151px;
+}
+.tableCell:nth-child(6) {
+    width: 98px;
+}
+.tableCell:nth-child(7) {
+    width: 117px;
+}
+.tableCell:nth-child(8) {
+    width: 81px;
+}
+.tableAccountsSecond {
+    font-weight: 300;
+    border-bottom: 1px solid #E5E5E5;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+}
+.tabelCellArrow {
+    background: url(../media/arrow.png) center center no-repeat;
+    width: 21px;
+    height: 23px;
+}
+.tabelCellUnion {
+    background: url(../media/union.png) center center no-repeat;
+    width: 16px;
+    height: 29px;
+}
+.tableAccountsSecond a {
+    text-decoration: none;
+    color: #000;
+}
+.headerHelp {
+    display: inline;
+    height: 23px;
+}
+.leftArrow {
+    float: left;
+    font-weight: 300;
+    font-size: 20px;
+    text-decoration: none;
+    color: #000;
+    position: relative;
+    padding-left: 23px;
+    margin-right: 151px;
+}
+.leftArrow::before {
+    content: "";
+    background: url(../media/littleArrow.png) center center no-repeat;
+    position: absolute;
+    top: 4px;
+    left: 0;
+    width: 8px;
+    height: 14px;
+}
+.headerHelp p {
+    font-weight: 300;
+    font-size: 20px;
+    float: left;
+}
+.mailSelect {
+    background: #fff;
+    border: 1.75px solid #E5E5E5;
+    border-radius: 5px;
+    padding: 19px 15px;
+    width: 472px;
+    font-size: 20px;
+    font-weight: 300;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url('../media/select.png') no-repeat 96% center;
+    float: left;
+}
+.star {
+    color: #DE3F2A;
+    float: left;
+    margin-left: 10px;
+    font-size: 20px;
+    margin-top: -5px;
+}
+.mailButts {
+    margin-top: 31px;
+    float: left;
+    height: 60px;
+}
+.contactMail {
+    margin-left: 17px;
+    margin-top: 30px;
+}
+.contactMail div:first-child {
+    font-size: 20px;
+    color: #000;
+    font-weight: 300;
+    float: left;
+}
+.contactMail div:last-child {
+    font-size: 10px;
+    color: #C4C4C4;
+    font-weight: 300;
+    margin-top: 7px;
+}
+.contactMail a:visited {
+    color: #4a7ebd;
+}
+.contactMailInput {
+    border: 0;
+    background-color: #E5E5E5;
+    border-radius: 5px;
+    color: #636363;
+    padding: 15px 20px;
+    width: 100%;
+    height: 100%;
+    font-weight: 300;
+    position: relative;
+}
+.contactMailInput::placeholder
+{
+    color: #636363;
+    font-size: 20px;
+    font-weight: 300;
+}
+.contactMailIn {
+    display: block;
+    position: relative;
+    width: 472px;
+    height: 60px;
+    margin-top: 18px;
+    margin-bottom: 30px;
+}
+.contactMailIn > div {
+    margin-top: 7px;
+}
+.mailQuestion {
+    margin-bottom: 30px;
+}
+.mailQuestion div:first-child {
+    font-weight: 300;
+    font-size: 20px;
+    color: black;
+    position: relative;
+    width: 124px;
+    margin-left: 17px;
+}
+.mailQuestion div:first-child::before {
+    content: "*";
+    position: absolute;
+    margin-top: 0px;
+    right: 0;
+    font-size: 20px;
+    color: #DE3F2A;
+}
+.mailQuestion div:nth-child(2){
+    font-weight: 300;
+    font-size: 10px;
+    color: #C4C4C4;
+    margin-top: 7px;
+    margin-left: 17px;
+}
+.mailQuestion div:nth-child(3) textarea {
+    width: 472px;
+    height: 154px;
+    margin-top: 18px;
+    border-radius: 5px;
+    border: 1.75px solid #E5E5E5;
+    padding-top: 18px;
+    padding-left: 17px;
+    font-weight: 300;
+    font-size: 20px;
+    color: #C4C4C4;
+    resize: none;
+}
+.investments {
+    margin-left: 17px;
+}
+.investmentsUp {
+    float: left;
+    padding-right: 5px;
+}
+.investments div:first-child {
+    color: black;
+    font-weight: 300;
+    font-size: 20px;
+}
+.investments div:nth-child(2) {
+    color: #C4C4C4;
+    font-weight: 300;
+    font-size: 20px;
+}
+.investments div:last-child {
+    color: #C4C4C4;
+    font-weight: 300;
+    font-size: 20px;
+}
+.investmentsLittle {
+    float: left;
+    margin-left: 17px;
+    font-weight: 300;
+    font-size: 10px;
+    color: #C4C4C4;
+    margin-top: 7px;
+}
+.inputFile {
+    margin-top: 18px;
+    width: 273px;
+    height: 64px;
+    border: 1.75px solid #E5E5E5;
+    border-radius: 5px;
+    background: url(../media/clip.png) 17px center no-repeat;
+}
+.inputFile div {
+    text-align: center;
+    font-weight: 300;
+    font-size: 20px;
+    color: #C4C4C4;
+    margin-top: 17px;
+    margin-left: 30px;
+}
+.inputFile input {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+}
+.kyesButBut
+{
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 5px;
+    padding: 20px 35px;
+    font-size: 20px;
+    font-weight: 700;
+    margin-right: 52px;
+    float: left;
+    width: 273px;
+}
+.kyesBut
+{
+    margin-top: 30px;
+    cursor: pointer;
+    height: 65px;
+}
+.kyesButBut
+{
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+.kyesButButBlue
+{
+    background-color: #0E53A7;
+    color: #fff;
+}
+.kyesButBut:active
+{
+    opacity: 0.8;
+}
+.kyesButBut:hover
+{
+    transform: translate(0,-5px);
+}
+.kyesButButWhite
+{
+    color: #000;
+    background-color: #fff;
+    border: 1px solid #D9D9D9;
 }

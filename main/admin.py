@@ -38,7 +38,7 @@ class keysModel(admin.ModelAdmin):
 
 
 class requisitesModel(admin.ModelAdmin):
-    fields = ['org', ('inn', 'kpp', 'company', 'adress'), ('contacts', 'email', 'phone'),
+    fields = ['org', ('inn', 'kpp', 'company', 'address'), ('contacts', 'email', 'phone'),
               'docs', ('bank', 'checking', 'bic', 'checkingCo'), 'ogrn']
 
 
@@ -47,4 +47,5 @@ admin.site.register(models.AdvUser, UserAdmin)
 admin.site.register(models.keys, keysModel)
 admin.site.register(models.tariffs, tarifModel)
 admin.site.register(models.requisites, requisitesModel)
+admin.site.register(models.checks)
 

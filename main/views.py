@@ -4,8 +4,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LogoutView
 from datetime import datetime
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import CreateView, TemplateView
-
+from django.views.generic import CreateView, TemplateView, FormView
+from django.views.generic.list import ListView
 from . import forms, models, utilities
 
 
@@ -162,3 +162,14 @@ def password_email(request, sign):
         template = 'user/password_change_email.html'
 
     return render(request, template, context)
+
+
+class checks(ListView):
+    model = models.checks
+    template_name = 'pages/checks.html'
+
+
+class help(FormView):
+    template_name = 'pages/help.html'
+    success_url = '/help'
+    form_class = forms.help_form
