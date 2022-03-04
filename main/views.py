@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.core.signing import BadSignature
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -60,16 +61,6 @@ class createUser(CreateView):
     form_class = forms.RegisterUserForm
     success_url = '/'
 
-    def form_valid(self, form):
-        user = form.save(commit=False)
-        user.email = user.username
-        name = user.username
-        user.save()
-        userNow = models.AdvUser.objects.get(username=name)
-        tariff = models.tariffs.objects.get(pk=1)
-        models.keys.objects.create(number=user.key, owner=userNow, tariff=tariff)
-        return super().form_valid(form)
-
 
 class key(LoginRequiredMixin, TemplateView):
     template_name = 'pages/keys.html'
@@ -93,6 +84,10 @@ class req(LoginRequiredMixin, TemplateView):
     template_name = 'pages/req.html'
     login_url = '/'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['list_req'] = models.requisites.objects.filter(owner=self.request.user.username)
+        return context
 
 def validateKey(request):
     context = {}
@@ -133,13 +128,14 @@ def validateKey(request):
 
 
 def password_email_form(request):
-    context = {}
+    context = {'display': 'none'}
     if request.method == "POST":
         username = request.POST['username']
         if models.AdvUser.objects.filter(username=username).exists():
             user = models.AdvUser.objects.get(username=username)
             utilities.send_password_notification(user)
             context['mail'] = "Проверьте почту"
+            context['display'] = 'block'
         else:
             context['errors'] = "Введен неверный логин"
     return render(request, 'user/password_email_form.html', context)
@@ -168,8 +164,14 @@ class checks(ListView):
     model = models.checks
     template_name = 'pages/checks.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['list_checks'] = models.checks.objects.filter(owner=self.request.user.username)
+        return context
+
 
 class help(FormView):
     template_name = 'pages/help.html'
     success_url = '/help'
     form_class = forms.help_form
+

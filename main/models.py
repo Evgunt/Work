@@ -37,7 +37,7 @@ class keys(models.Model):
     tariff = models.ForeignKey(tariffs, blank=True, verbose_name='Тариф',
                                on_delete=models.PROTECT, to_field="name")
     date = models.DateField(editable=True, auto_now=False, db_index=True, blank=True, verbose_name='Работает до')
-    owner = models.ForeignKey(AdvUser, on_delete=models.CASCADE, blank=False,
+    owner = models.ForeignKey(AdvUser, on_delete=models.PROTECT, blank=False,
                               verbose_name='Владелец', to_field="username")
     checkNum = models.CharField(max_length=300, default="", blank=True, verbose_name='Проверочный код')
 

@@ -237,9 +237,16 @@ $( document ).ready(function() {
     $(".eye_input").click(function(){
         let type =  $(this).parent().find("input").attr('type')
         if (type == 'password')
-            $(this).parent().find("input").attr('type', "text")
+        {
+            $(this).parent().find("input").attr('type', "text");
+            $(this).addClass('eye_input--close');
+
+        }
         else
-            $(this).parent().find("input").attr('type', "password")
+        {
+            $(this).parent().find("input").attr('type', "password");
+            $(this).removeClass('eye_input--close');
+        }
     });
     $('.tableCell[data-type="summ_js"]').each(function(){
         let summ_js = parseInt($(this).html());

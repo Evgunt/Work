@@ -33,6 +33,9 @@
             <img class="page_logo" src="{% static 'media/logo.png' %}" alt="logo">
             <div class="clear"></div>
             <h1 class="page_title">Счета</h1>
+            {% if not list_checks %}
+                <p class="empty">Пока нет одного счета</p>
+            {% else %}
             <div class="mainTable">
                 <div class="tableAccountsFirst clearfix">
                     <div class="tableCell">№ п/п</div>
@@ -44,7 +47,7 @@
                     <div class="tableCell">Загрузить платежное поручение</div>
                     <div class="tableCell">Скачать УПД</div>
                 </div>
-                {% for checks in object_list %}
+                {% for checks in list_checks %}
                 <div class="tableAccountsSecond clearfix">
                     <div class="tableCell">{{forloop.counter}}</div>
                     <div class="tableCell">{{checks.num}}</div>
@@ -56,6 +59,7 @@
                     <a href="#" class="tableCell tabelCellArrow"></a>
                 </div>
                 {% endfor %}
+            {%endif%}
             </div>
         </section>
     </div>

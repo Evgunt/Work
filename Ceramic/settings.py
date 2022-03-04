@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'ckeditor_uploader',
     'ckeditor',
+    'post_office'
 ]
 
 CKEDITOR_UPLOAD_PATH = "/media/"
@@ -152,10 +153,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "despair.keeps@gmail.com"
+EMAIL_HOST_PASSWORD = 'ymcrwpyegzqmtlra'
+EMAIL_BACKEND = 'post_office.EmailBackend'
+EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'username@gmail.com'
-EMAIL_HOST_PASSWORD = 'password'
+EMAIL_USE_SSL = False
 
