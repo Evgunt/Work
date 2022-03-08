@@ -1,6 +1,18 @@
 {% extends "basic.html" %}
 {% load static%}
 {% block content %}
+<div class="dark_errors" style="display:{{display}}">
+    <div class="errors_container help_mess">
+        <div class="errors_container_titles clearfix">
+            <div class="errors_container_title">Ceramic 3D</div>
+            <div class="errors_container_cross"></div>
+        </div>
+        <div class="sucsess clearfix">
+            <div class="sucsess_text help_mess_text">Спасибо, ваша заявка принята. Мы свяжемся с вами в ближайшее время.</div>
+            <div class="sucsess_icon"></div>
+        </div>
+    </div>
+</div>
 <div class="center clearfix">
     <nav class="page_left">
         <a href="{% url 'main:key' %}" class="nav_item clearfix">
@@ -19,10 +31,10 @@
             <div class="nav_item_img img_help"></div>
             <div class="nav_item_name">Помощь</div>
         </a>
-        <div class="nav_item clearfix">
+        <a href="{% url 'main:profile' %}"  class="nav_item clearfix">
             <div class="nav_item_img img_profile"></div>
             <div class="nav_item_name">Профиль</div>
-        </div>
+        </a>
         <a href="{% url 'main:logout' %}" class="nav_item clearfix">
             <div class="nav_item_img img_logout"></div>
             <div class="nav_item_name">Выйти</div>
@@ -33,36 +45,29 @@
             <img class="page_logo" src="{% static 'media/logo.png' %}" alt="logo">
             <div class="clear"></div>
             <h1 class="page_title">Помощь</h1>
-            <div class="mainMenu">
-<!--               <div class="headerHelp">-->
-<!--                  <a href="#" class="leftArrow">Назад</a> -->
-<!--                    <p>Написать Службе Заботы</p>-->
-<!--                </div>-->
-                <div class="clear"></div>
+            <form method="POST" class="mainMenu" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="mailButts clearfix">
-                    <input type="text" name="" class="main_input" placeholder="Тема письма">
-<!--                    <select class="mailSelect">-->
-<!--                        <option value="1">Тема письма</option>-->
-<!--                        <option value="2">Тема письма</option>-->
-<!--                        <option value="3">Тема письма</option>-->
-<!--                    </select>-->
+                    <input type="text" name="title" class="main_input" placeholder="Тема письма">
                     <div class="star">*</div>
                 </div>
                 <div class="clear"></div>
                 <div class="contactMail">
                     <div>Контактная почта</div>
                     <div class="clear"></div>
-                    <div>Мы ответим на вашу контактную почту. Изменить почту можно <a href="#">в профиле</a></div>
+                    <div>Мы ответим на вашу контактную почту. Изменить почту можно
+                        <a href="{% url 'main:profile' %}">в профиле</a>
+                    или в форме внизу</div>
                 </div>
                 <label class="contactMailIn">
-                    <input type="text" placeholder="ij.ceram8ic3d@gmail.com" class="contactMailInput">
+                    <input type="text" placeholder="ij.ceram8ic3d@gmail.com" name="email" class="contactMailInput" value="{{user.email}}">
                     <div class="cross_input"></div>
                 </label>
                 <div class="mailQuestion">
                     <div>Ваш вопрос</div>
                     <div>Постарайтесь описать детали: если вопрос о конкретных аккаунтах или кампаниях, укажите их ID</div>
                     <div>
-                        <textarea placeholder="Введите вопрос"></textarea>
+                        <textarea placeholder="Введите вопрос" name="question"></textarea>
                     </div>
                 </div>
                 <div class="investments">
@@ -73,18 +78,18 @@
                 <div class="clear"></div>
                 <div class="investmentsLittle">
                     <div>Можно добавить до 10 файлов. Максимальный размер одного файла - 20 Мбайт.</div>
-                    <div>Поддерживаем основные форматы изображений, документов и видео.</div>
+                    <div>Поддерживаем основные форматы изображений и документов.</div>
                 </div>
                 <div class="clear"></div>
                 <div class="inputFile">
                     <div>Прикрепить файл</div>
-                    <input type="file" placeholder="Прикрепить файл">
+                    <input type="file" placeholder="Прикрепить файл" name="inv" id="file_help" multiple>
                 </div>
+                <p class="errors_file">Фаил не выбран</p>
                 <div class="kyesBut">
-                    <div class="kyesButBut kyesButButBlue">Отправить</div>
-<!--                    <div class="kyesButBut kyesButButWhite">Закрыть</div>-->
+                    <input type="submit" class="kyesButBut kyesButButBlue" value="Отправить">
                 </div>
-            </div>
+            </form>
         </section>
     </div>
 </div>

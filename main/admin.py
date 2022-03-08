@@ -32,6 +32,10 @@ class tarifModel(admin.ModelAdmin):
             return qs
 
 
+class help_files(admin.TabularInline):
+   model = models.Files_helps
+
+
 class keysModel(admin.ModelAdmin):
     fields = [('number', 'name'), ('tariff', 'date'),
               'owner', 'checkNum']
@@ -39,7 +43,23 @@ class keysModel(admin.ModelAdmin):
 
 class requisitesModel(admin.ModelAdmin):
     fields = ['org', ('inn', 'kpp', 'company', 'address'), ('contacts', 'email', 'phone'),
-              'docs', ('bank', 'checking', 'bic', 'checkingCo'), 'ogrn']
+              'docs', ('bank', 'checking', 'bic', 'checkingCo'), 'ogrn', 'owner']
+    
+    def has_change_permission(self, request, obj=None):
+        return False    
+
+    def has_dellete_permission(self, request, obj=None):
+        return False
+
+
+class helpMessageModel(admin.ModelAdmin):
+    inlines = (help_files,)
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_add_permission(self, request):
+        return False
 
 
 admin.site.unregister(Group)
@@ -48,4 +68,5 @@ admin.site.register(models.keys, keysModel)
 admin.site.register(models.tariffs, tarifModel)
 admin.site.register(models.requisites, requisitesModel)
 admin.site.register(models.checks)
+admin.site.register(models.helpMessage, helpMessageModel)
 

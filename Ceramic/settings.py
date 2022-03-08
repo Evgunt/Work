@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'ckeditor_uploader',
     'ckeditor',
-    'post_office'
+    'post_office',
+    'django_cleanup.apps.CleanupConfig'
 ]
 
 CKEDITOR_UPLOAD_PATH = "/media/"
@@ -77,6 +78,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'Ceramic.urls'
@@ -156,11 +158,17 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "despair.keeps@gmail.com"
-EMAIL_HOST_PASSWORD = 'ymcrwpyegzqmtlra'
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_HOST_USER = "Despair_keep@mail.ru"
+EMAIL_HOST_PASSWORD = 'DesKepUs07'
 EMAIL_BACKEND = 'post_office.EmailBackend'
-EMAIL_PORT = 587
+EMAIL_PORT = 465
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = 'despair.keeps@gmail.com'
+# EMAIL_HOST_PASSWORD = 'DesKepUs01'
+# EMAIL_PORT = 587
+# EMAIL_BACKEND = 'post_office.EmailBackend'

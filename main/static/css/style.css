@@ -532,19 +532,21 @@ body, html, main
     font-weight: 700;
     margin-right: 20px;
     float: left;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+    text-decoration: none;
+}
+.kyes_butts_button:disabled
+{
+    opacity: 0.6;
 }
 .kyes_butts
 {
     margin-top: 30px;
     cursor: pointer;
     height: 65px;
-}
-.kyes_butts_button
-{
-    -webkit-transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    -o-transition: all 0.2s;
-    transition: all 0.2s;
 }
 .kyes_butts_button--blue
 {
@@ -1330,6 +1332,7 @@ input[type="checkbox"].tarif_butt-switch:checked + label:before {
     height: 100%;
     font-weight: 300;
     position: relative;
+    font-size: 18px;
 }
 .contactMailInput::placeholder
 {
@@ -1378,11 +1381,9 @@ input[type="checkbox"].tarif_butt-switch:checked + label:before {
     margin-top: 18px;
     border-radius: 5px;
     border: 1.75px solid #E5E5E5;
-    padding-top: 18px;
-    padding-left: 17px;
+    padding: 18px 17px;
     font-weight: 300;
     font-size: 20px;
-    color: #C4C4C4;
     resize: none;
 }
 .investmentsUp {
@@ -1450,7 +1451,7 @@ input[type="checkbox"].tarif_butt-switch:checked + label:before {
 }
 .kyesBut
 {
-    margin-top: 30px;
+    margin-top: 25px;
     cursor: pointer;
     height: 65px;
 }
@@ -1465,6 +1466,8 @@ input[type="checkbox"].tarif_butt-switch:checked + label:before {
 {
     background-color: #0E53A7;
     color: #fff;
+    border: 0;
+    cursor: pointer;
 }
 .kyesButBut:active
 {
@@ -1497,4 +1500,427 @@ input[type="checkbox"].tarif_butt-switch:checked + label:before {
     color: #0E53A7;
     margin-top: 75px;
     text-align: center;
+}
+.errors_file
+{
+    font-size: 18px;
+    font-weight: 300;
+    font-style: italic;
+    text-align: center;
+    margin-top: 5px;
+    width: 270px;
+}
+.help_mess
+{
+    width: 520px;
+}
+.help_mess_text 
+{
+    width: 375px;
+}
+
+.chekFace div {
+    margin-top: 41px;
+    float: left;
+    margin-right: 37px;
+}
+.chekFace div input {
+    margin-right: 9px;
+    cursor: pointer;
+}
+.chekFace div:first-child {
+    width: 189px;
+}
+.chekFace div:nth-child(2) {
+    width: 394px;
+}
+.contactFaceInput {
+    border-radius: 5px;
+    border: 1.75px solid #E5E5E5;
+    width: 100%;
+    height: 100%;
+    font-weight: 300;
+    position: relative;
+    padding: 17px 18px;
+    font-size: 20px;
+}
+.contactFaceInput::placeholder
+{
+    color: #636363;
+    font-size: 20px;
+    font-weight: 300;
+}
+.contactFace {
+    position: relative;
+    width: 472px;
+    height: 60px;
+    float: left;
+}
+.mainContactFace .contactFace:first-child {
+    margin-top: 32px;
+    margin-right: 45px;
+}
+.mainContactFace .contactFace:nth-child(2) {
+    margin-top: 32px;
+}
+.mainContactFace .contactFace:nth-child(3) {
+    margin-top: 28px;
+    margin-right: 45px;
+}
+.mainContactFace .contactFace:nth-child(4) {
+    margin-top: 28px;
+}
+.contactFace > .cross_input {
+    margin-top: 7px;
+}
+.contactInf {
+    margin-top: 27px;
+}
+.contactInf div {
+    float: left;
+}
+.contactInf div:first-child {
+    font-weight: 300;
+    font-size: 20px;
+    margin-left: 17px;
+    margin-top: 23px;
+}
+.contactInf div:last-child {
+    border-bottom: 1px solid #E5E5E5;
+    width: 733px;
+    margin-left: 8px;
+    height: 23px;
+    margin-top: 20px;
+}
+.contactFormInput {
+    border-radius: 5px;
+    border: 1.75px solid #E5E5E5;
+    width: 100%;
+    height: 100%;
+    font-weight: 300;
+    position: relative;
+    padding: 17px 18px;
+    font-size: 20px;
+}
+.contactFormInput::placeholder
+{
+    color: #636363;
+    font-size: 20px;
+    font-weight: 300;
+}
+.contactForm {
+    position: relative;
+    width: 472px;
+    height: 60px;
+    float: left;
+}
+.contactInfForm {
+    margin-top: 24px;
+}
+.contactInfForm .contactForm:first-child {
+    margin-right: 45px;
+    margin-bottom: 27px;
+}
+.contactInfForm .cross_input {
+    margin-top: 7px;
+}
+.documents div {
+    float: left;
+}
+.documents div:first-child {
+    font-weight: 300;
+    font-size: 20px;
+    margin-right: 10px;
+    width: 329px;
+    margin-top: 24px;
+    margin-left: 17px;
+}
+.documents div:last-child {
+    border-bottom: 1px solid #E5E5E5;
+    width: 633px;
+    height: 23px;
+    margin-top: 21px;
+}
+.originalDocuments {
+    margin-top: 24px;
+    float: left;
+    height: 60px;
+}
+.originalDocumentsSelect {
+    background: #fff;
+    border: 1.75px solid #E5E5E5;
+    border-radius: 5px;
+    padding: 19px 15px;
+    width: 472px;
+    font-size: 20px;
+    font-weight: 300;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url('../media/select.png') no-repeat 96% center;
+    float: left;
+}
+.bank {
+    margin-top: 24px;
+}
+.bank div {
+    float: left;
+}
+.bank div:first-child {
+    font-weight: 300;
+    font-size: 20px;
+    margin-left: 17px;
+    width: 45px;
+}
+.bank div:last-child {
+    border-bottom: 1px solid #E5E5E5;
+    width: 909px;
+    margin-left: 18px;
+    height: 23px;
+    margin-top: -3px;
+}
+.ogrn {
+    margin-top: 19px;
+}
+.ogrn div {
+    float: left;
+}
+.ogrn div:first-child {
+    font-weight: 300;
+    font-size: 20px;
+    margin-left: 17px;
+    width: 45px;
+}
+.ogrn .tableOgrn {
+    border: 1px solid #C4C4C4;
+    margin-left: 31px;
+}
+.tableOgrn .inputTableOgrn {
+    float: left;
+    height: 25px;
+    width: 25px;
+    border-left: 1px solid #C4C4C4;
+    border-right: 1px solid #C4C4C4;
+    outline: none;
+    border-top: none;
+    border-bottom: none;
+    display: block;
+    padding: 5px;
+    font-weight: 300;
+    font-size: 20px;
+}
+.tableOgrn .inputTableOgrn::-webkit-outer-spin-button,
+.tableOgrn .inputTableOgrn::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+.mainAgreementConditions {
+    margin-top: 56px;
+}
+.mainAgreementConditions .checkbox_container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-weight: 300;
+    font-size: 20px;
+    margin-top: 10px;
+    line-height: 14px;
+}
+.mainAgreementConditions .checkbox_container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.mainAgreementConditions .checkmark {
+    position: absolute;
+    top: -4px;
+    left: 0;
+    height: 22px;
+    width: 21px;
+    border: 1px solid #C4C4C4;
+    border-radius: 5px;
+}
+.mainAgreementConditions .checkbox_container input:checked ~ .checkmark
+{
+    background: url(../media/checkbox.png) center center no-repeat;
+    border-radius: 5px;
+    padding: 3px;
+}
+.mainAgreementConditions .checkbox_container:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.mainAgreementConditions .checkbox_container input:checked ~ .checkmark:after
+{
+    display: block;
+}
+.mainAgreementConditions .checkbox_container .checkmark:after
+{
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.mainAgreementConditions .checkbox_container a
+{
+    color: #0E53A7;
+    text-decoration: none;
+}
+.mainAgreementConditions .checkbox_container a:visited
+{
+    opacity: 0.8;
+}
+.orangeButt input {
+    margin-top: 24px;
+    border: none;
+    cursor: pointer;
+}
+
+.profileA {
+    width: 330px;
+    border-bottom: 1px solid #E5E5E5;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    font-weight: 300;
+    font-size: 20px;
+    color: #000;
+    float: left;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    display: block;
+    padding-bottom: 6px;
+    margin-top: 40px;
+}
+.profileA--active{
+    border-bottom: 2px solid #0E53A7;
+}
+.mainProfile {
+    margin-top: 43px;
+}
+.mainProfile div {
+    float: left;
+}
+.leftMail {
+    font-weight: 300;
+    font-size: 20px;
+    color: #C4C4C4;
+    margin-right: 71px;
+    margin-left: 55px;
+}
+.mainProfile .centerMail {
+    width: 227px;
+    margin-right: 71px;
+}
+.mainProfile .centerMail div:first-child {
+    font-weight: 300;
+    font-size: 20px;
+    color: #000;
+}
+.mainProfile .centerMail div:last-child {
+    font-weight: 300;
+    font-size: 10px;
+    color:#C4C4C4;
+    margin-top: 20px;
+}
+.rightMail {
+    font-weight: 300;
+    font-size: 20px;
+    color: #0E53A7;
+    text-decoration: none;
+}
+.mainProfileTwo {
+    margin-top: 36px;
+}
+.mainProfileTwo div {
+    float: left;
+}
+.mainProfileTwo .leftMail {
+    margin-right: 110px;
+}
+.mainProfileThree {
+    margin-top: 80px;
+}
+.mainProfileThree div {
+    float: left;
+}
+.mainProfileThree .leftMail {
+    margin-right: 197px;
+}
+.mainProfileThree .centerMail {
+    font-weight: 300;
+    font-size: 20px;
+    margin-right: 196px;
+}
+.mainProfileThree .rightMail {
+    margin-right: 196px;
+}
+.mainProfileFour {
+    margin-top: 84px;
+}
+.mainProfileFour div {
+    float: left;
+}
+.mainProfileFour .leftMail {
+    margin-right: 82px;
+}
+.mainProfileFour .centerMail {
+    font-weight: 300;
+    font-size: 20px;
+    margin-right: 145px;
+}
+.mainProfileFive {
+    margin-top: 80px;
+}
+.mainProfileFive div {
+    float: left;
+}
+.mainProfileFive .leftMail {
+    margin-right: 172px;
+}
+.mainProfileFive .centerMail {
+    font-weight: 300;
+    font-size: 20px;
+}
+.mainProfileSix {
+    margin-top: 80px;
+}
+.mainProfileSix div {
+    float: left;
+}
+.mainProfileSix .leftMail {
+    margin-right: 109px;
+}
+.mainProfileSix .centerMail {
+    font-weight: 300;
+    font-size: 20px;
+    margin-right: 232px;
+}
+.mainProfileSeven {
+    margin-top: 80px;
+}
+.mainProfileSeven div {
+    float: left;
+}
+.mainProfileSeven .leftMail {
+    margin-right: 189px;
+}
+.mainProfileSeven .centerMail {
+    font-weight: 300;
+    font-size: 20px;
 }

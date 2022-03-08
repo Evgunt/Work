@@ -19,10 +19,10 @@
             <div class="nav_item_img img_help"></div>
             <div class="nav_item_name">Помощь</div>
         </a>
-        <div class="nav_item clearfix">
+        <a href="{% url 'main:profile' %}"  class="nav_item clearfix">
             <div class="nav_item_img img_profile"></div>
             <div class="nav_item_name">Профиль</div>
-        </div>
+        </a>
         <a href="{% url 'main:logout' %}" class="nav_item clearfix">
             <div class="nav_item_img img_logout"></div>
             <div class="nav_item_name">Выйти</div>
@@ -34,17 +34,18 @@
             <div class="clear"></div>
             <h1 class="page_title">Реквизиты</h1>
             <div class="kyes_butts">
-                <div class="kyes_butts_button kyes_butts_button--orange">Добавить реквизиты</div>
-                <select class="filter_select">
-                    <option value="1">все реквизиты</option>
-                    <option value="2">все реквизиты</option>
-                    <option value="3">все реквизиты</option>
-                </select>
-                <select class="filter_select">
-                    <option value="1">активные</option>
-                    <option value="1">активные</option>
-                    <option value="1">активные</option>
-                </select>
+                <a href="{% url 'main:requisites_add' %}"
+                   class="kyes_butts_button kyes_butts_button--orange">Добавить реквизиты</a>
+<!--                <select class="filter_select">-->
+<!--                    <option value="1">все реквизиты</option>-->
+<!--                    <option value="2">все реквизиты</option>-->
+<!--                    <option value="3">все реквизиты</option>-->
+<!--                </select>-->
+<!--                <select class="filter_select">-->
+<!--                    <option value="1">активные</option>-->
+<!--                    <option value="1">активные</option>-->
+<!--                    <option value="1">активные</option>-->
+<!--                </select>-->
             </div>
             <div class="req">
                 <div class="req_item clearfix">
@@ -55,23 +56,6 @@
                     </div>
                     <div class="req_item_right clearfix">
                         <div class="req_item_right_text">Основной</div>
-                        <div class="req_item_right_icon">?</div>
-                        <div class="req_item_right_moreIcon">
-                            <div class="req_item_right_moreIcon_circol"></div>
-                            <div class="req_item_right_moreIcon_circol"></div>
-                            <div class="req_item_right_moreIcon_circol"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="req_item clearfix">
-                    <div class="req_item_icon">И</div>
-                    <div class="req_item_info">
-                        <div class="req_item_title">ИП Рак Иван Геннадьевич</div>
-                        <div class="req_item_text">2021/11/22-574198-adv</div>
-                    </div>
-                    <div class="req_item_right clearfix">
-                        <div class="req_item_right_text">Основной</div>
-                        <div class="req_item_right_icon">?</div>
                         <div class="req_item_right_moreIcon">
                             <div class="req_item_right_moreIcon_circol"></div>
                             <div class="req_item_right_moreIcon_circol"></div>

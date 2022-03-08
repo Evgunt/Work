@@ -1,14 +1,12 @@
-from django.core.exceptions import ValidationError
-from django.core.signing import BadSignature
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LogoutView
 from datetime import datetime
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import CreateView, TemplateView, FormView
+from django.views.generic import CreateView, TemplateView
 from django.views.generic.list import ListView
 from . import forms, models, utilities
-
+from django.utils import timezone
 
 def loginUser(request):
     if request.user.is_authenticated:
@@ -61,6 +59,12 @@ class createUser(CreateView):
     form_class = forms.RegisterUserForm
     success_url = '/'
 
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('/keys')
+        else:
+            return render(request, 'user/createUser.html')
+
 
 class key(LoginRequiredMixin, TemplateView):
     template_name = 'pages/keys.html'
@@ -88,6 +92,7 @@ class req(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         context['list_req'] = models.requisites.objects.filter(owner=self.request.user.username)
         return context
+
 
 def validateKey(request):
     context = {}
@@ -160,9 +165,10 @@ def password_email(request, sign):
     return render(request, template, context)
 
 
-class checks(ListView):
+class checks(LoginRequiredMixin, ListView):
     model = models.checks
     template_name = 'pages/checks.html'
+    login_url = '/'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -170,8 +176,42 @@ class checks(ListView):
         return context
 
 
-class help(FormView):
+class Help(LoginRequiredMixin, CreateView):
     template_name = 'pages/help.html'
     success_url = '/help'
     form_class = forms.help_form
+    login_url = '/'
 
+    def post(self, request, *args, **kwargs):
+        context = {'display': 'none'}
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        files = self.request.FILES.getlist('inv')
+        if form.is_valid():
+            id = form.save().pk
+            helpMessage = models.helpMessage.objects.get(pk=id)
+            if files:
+                for f in files:
+                    fl = models.Files_helps(helps=helpMessage, file=f)
+                    fl.save()
+            context['display'] = 'block'
+        self.form_valid(form)
+        return render(self.request, 'pages/help.html', context)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['display'] = 'none'
+        return context
+
+
+class profile(LoginRequiredMixin, TemplateView):
+    template_name = 'pages/profile.html'
+    success_url = '/profile'
+    login_url = '/'
+
+
+class requisites_add(LoginRequiredMixin, CreateView):
+    template_name = 'pages/req_add.html'
+    success_url = '/requisites_add'
+    form_class = forms.add_req_form
+    login_url = '/'

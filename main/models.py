@@ -81,9 +81,10 @@ class checks(models.Model):
     date = models.DateField(editable=True, auto_now=False, db_index=True, blank=True, verbose_name='Дата счета')
     sum = models.IntegerField(default=0, blank=False, verbose_name='Сумма счета')
     status = models.CharField(max_length=300, default="", blank=False, verbose_name='Статус')
-    docs = models.FileField(default="", blank=True, verbose_name='Документ', upload_to='media/')
-    pay = models.FileField(default="", blank=True, verbose_name='Загрузить платежное поручение', upload_to='media/')
-    upd = models.FileField(default="", blank=True, verbose_name='УПД', upload_to='media/')
+    docs = models.FileField(default="", blank=True, verbose_name='Документ', upload_to='media/checks')
+    pay = models.FileField(default="", blank=True, verbose_name='Загрузить платежное поручение',
+                           upload_to='media/checks')
+    upd = models.FileField(default="", blank=True, verbose_name='УПД', upload_to='media/checks')
     owner = models.ForeignKey(AdvUser, on_delete=models.CASCADE, blank=False,
                               verbose_name='Владелец', to_field="username", default="")
 
@@ -93,3 +94,25 @@ class checks(models.Model):
 
     def __str__(self):
         return self.num
+
+
+class helpMessage(models.Model):
+    title = models.CharField(max_length=300, default="", blank=False, verbose_name='Тема письма')
+    email = models.EmailField(max_length=300, default="", blank=False, verbose_name='Контактная почта')
+    question = RichTextField(default="", blank=False, verbose_name='Вопрос')
+
+    class Meta:
+        verbose_name_plural = 'Тех. поддержка'
+        verbose_name = 'Тех. поддержка'
+
+    def __str__(self):
+        return self.title
+
+
+class Files_helps(models.Model):
+    file = models.FileField(blank=True, null=True, verbose_name='Файлы', upload_to='media/help')
+    helps = models.ForeignKey(helpMessage, blank=True, null=True, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = "Вложения"
+        verbose_name_plural = "Вложения"

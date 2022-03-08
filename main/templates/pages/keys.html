@@ -111,11 +111,11 @@
 </div>
 <div class="center clearfix">
     <nav class="page_left">
-        <a href="{% url 'main:key' %}" class="nav_item clearfix nav_item--active" data-id="1">
+        <a href="{% url 'main:key' %}" class="nav_item clearfix nav_item--active">
             <div class="nav_item_img img_key"></div>
             <div class="nav_item_name">Ключи</div>
         </a>
-        <a href="{% url 'main:req' %}" class="nav_item clearfix" data-id="2">
+        <a href="{% url 'main:req' %}" class="nav_item clearfix">
             <div class="nav_item_img img_req"></div>
             <div class="nav_item_name">Реквизиты</div>
         </a>
@@ -127,17 +127,17 @@
             <div class="nav_item_img img_help"></div>
             <div class="nav_item_name">Помощь</div>
         </a>
-        <div class="nav_item clearfix">
+        <a href="{% url 'main:profile' %}"  class="nav_item clearfix">
             <div class="nav_item_img img_profile"></div>
             <div class="nav_item_name">Профиль</div>
-        </div>
+        </a>
         <a href="{% url 'main:logout' %}" class="nav_item clearfix">
             <div class="nav_item_img img_logout"></div>
             <div class="nav_item_name">Выйти</div>
         </a>
     </nav>
     <div class="page_right">
-        <section class="section_page" data-id="1">
+        <section class="section_page">
             <img class="page_logo" src="{% static 'media/logo.png' %}" alt="logo">
             <div class="clear"></div>
             <h1 class="page_title">мои ключи</h1>

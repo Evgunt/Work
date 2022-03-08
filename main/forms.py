@@ -3,7 +3,7 @@ from django.contrib.auth import password_validation
 from django.core.exceptions import ValidationError
 from datetime import datetime
 
-from .models import AdvUser, keys
+from .models import AdvUser, keys, helpMessage, requisites
 
 
 class RegisterUserForm(forms.ModelForm):
@@ -63,11 +63,17 @@ class loginForm(forms.Form):
         fields = ('username', 'password', 'key')
 
 
-class help_form(forms.Form):
-    title = forms.CharField(required=True)
-    email = forms.EmailField(required=True)
-    content = forms.CharField(required=True)
-    files = forms.FileField()
+class help_form(forms.ModelForm):
+
+    inv = forms.FileField()
 
     class Meta:
-        fields = ('title', 'email', 'content', 'files')
+        model = helpMessage
+        fields = '__all__'
+
+
+class add_req_form(forms.ModelForm):
+
+    class Meta:
+        model = requisites
+        fields = '__all__'

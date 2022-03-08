@@ -252,4 +252,45 @@ $( document ).ready(function() {
         let summ_js = parseInt($(this).html());
         $(this).html(summ_js.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0}));
     });
+    $("#file_help").change(function(){
+        console.log(this.files);
+        if(this.files.length > 0)
+        {
+            let filesStr = '';
+            for (var i = 0; i < this.files.length; i++)
+                filesStr += this.files[i].name+"; ";
+            $('.errors_file').html(filesStr)
+        }
+    });
+    $('.inputTableOgrn').keyup(function() { 
+        let ognr = '';
+        $('.inputTableOgrn').each(function(){
+            ognr += $(this).val();
+        });
+        $('#ogrn').val(ognr);
+
+        let thisNum = $(this).attr('data-change');
+        if (thisNum < 13 && $(this).val()!='')
+        {
+            thisNum++;
+            $('.inputTableOgrn[data-change="'+thisNum+'"]').focus();
+        }
+    });
+    $('.agreementConditionsInput').click(function(){
+        if($('#docs').prop('checked') && $('#docsTwo').prop('checked'))
+            $('#butt_add_req').removeAttr('disabled');
+        else
+            $('#butt_add_req').attr('disabled', 'disabled');
+    });
+
+    if($('#phone').length > 0)
+    {
+        let numbers = $('#phone').children().html();
+        let re = /(?:([\d]{1,}?))??(?:([\d]{1,3}?))??(?:([\d]{1,3}?))??(?:([\d]{2}))??([\d]{2})$/;
+        let formatted = numbers.replace( re, function( all, a, b, c, d, e ){
+            return ( a ? a + " " : "" ) + ( b ? b + " " : "" ) + ( c ? c + "-" : "" ) + ( d ? d + "-" : "" ) + e;
+        });
+        console.log(numbers);
+        $('#phone').html(formatted);
+    }
 });

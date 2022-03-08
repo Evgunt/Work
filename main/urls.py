@@ -13,6 +13,8 @@ urlpatterns = [
    path('password_email/<str:sign>', views.password_email, name='password_email'),
    path('password_email_form', views.password_email_form, name='password_email_form'),
    path('checks', views.checks.as_view(), name="checks"),
-   path('help', views.help.as_view(), name="help"),
-
+   path('help', views.Help.as_view(), name="help"),
+   path('profile', views.profile.as_view(), name="profile"),
+   path('requisites_add', views.requisites_add.as_view(), name="requisites_add"),
 ]
+

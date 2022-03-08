@@ -1,0 +1,160 @@
+{% extends "basic.html" %}
+{% load static%}
+{% block content %}
+<div class="center clearfix">
+    <nav class="page_left">
+        <a href="{% url 'main:key' %}" class="nav_item clearfix">
+            <div class="nav_item_img img_key"></div>
+            <div class="nav_item_name">Ключи</div>
+        </a>
+        <a href="{% url 'main:req' %}" class="nav_item clearfix nav_item--active">
+            <div class="nav_item_img img_req"></div>
+            <div class="nav_item_name">Реквизиты</div>
+        </a>
+        <a href="{% url 'main:checks' %}" class="nav_item clearfix">
+            <div class="nav_item_img img_rubl"></div>
+            <div class="nav_item_name">Счета</div>
+        </a>
+        <a href="{% url 'main:help' %}" class="nav_item clearfix">
+            <div class="nav_item_img img_help"></div>
+            <div class="nav_item_name">Помощь</div>
+        </a>
+        <a href="{% url 'main:profile' %}"  class="nav_item clearfix">
+            <div class="nav_item_img img_profile"></div>
+            <div class="nav_item_name">Профиль</div>
+        </a>
+        <a href="{% url 'main:logout' %}" class="nav_item clearfix">
+            <div class="nav_item_img img_logout"></div>
+            <div class="nav_item_name">Выйти</div>
+        </a>
+    </nav>
+    <div class="page_right">
+        <section class="section_page">
+            <img class="page_logo" src="{% static 'media/logo.png' %}" alt="logo">
+            <div class="clear"></div>
+            <h1 class="page_title">Новый договор</h1>
+            <form method="post">
+                <div class="chekFace">
+                    <div><input type="radio" name="org" checked>Юридическое лицо</div>
+                    <div><input type="radio" name="org">Индивидуальный предприниматель</div>
+                    <div><input type="radio" name="org">Физическое лицо</div>
+                </div>
+                <div class="mainContactFace">
+                    <div class="contactFace">
+                        <input type="text" placeholder="ИНН" name="inn" class="contactFaceInput">
+                        <div class="cross_input"></div>
+                    </div>
+                    <div class="contactFace">
+                        <input type="text" placeholder="КПП" name="kpp" class="contactFaceInput">
+                        <div class="cross_input"></div>
+                    </div>
+                    <div class="contactFace">
+                        <input type="text" name="company" placeholder="Юридическое название организации" class="contactFaceInput">
+                        <div class="cross_input"></div>
+                    </div>
+                    <div class="contactFace">
+                        <input type="text" placeholder="Юридический адрес" name="address" class="contactFaceInput">
+                        <div class="cross_input"></div>
+                    </div>
+                </div>
+                <div class="contactInf">
+                    <div>Контактная информация</div>
+                    <div></div>
+                </div>
+                <div class="clear"></div>
+                <div class="contactInfForm">
+                    <div class="contactForm">
+                        <input type="text" placeholder="Контактное лицо" name="contacts" class="contactFormInput">
+                        <div class="cross_input"></div>
+                    </div>
+                    <div class="contactForm">
+                        <input type="email" placeholder="E-mail" name="email" class="contactFormInput">
+                        <div class="cross_input"></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="contactForm">
+                        <input type="text" placeholder="Контактный телефон" name="phone" class="contactFormInput">
+                        <div class="cross_input"></div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="documents">
+                    <div>Как вы будете забирать документы</div>
+                    <div></div>
+                </div>
+                <div class="clear"></div>
+                    <div class="originalDocuments clearfix">
+                        <select class="originalDocumentsSelect" name="docs">
+                            <option value="1">Мне не нужны оригиналы</option>
+                            <option value="2">Мне не нужны оригиналы</option>
+                            <option value="3">Мне не нужны оригиналы</option>
+                        </select>
+                    </div>
+                <div class="clear"></div>
+                <div class="bank">
+                    <div>Банк</div>
+                    <div></div>
+                </div>
+                <div class="clear"></div>
+                <div class="mainContactFace">
+                    <div class="contactFace">
+                        <input type="text" placeholder="Наименование банка" name="bank" class="contactFaceInput">
+                        <div class="cross_input"></div>
+                    </div>
+                    <div class="contactFace">
+                        <input type="text" placeholder="Расчетный счет" name="checking" class="contactFaceInput">
+                        <div class="cross_input"></div>
+                    </div>
+                    <div class="contactFace">
+                        <input type="text" placeholder="БИК" name="bic" class="contactFaceInput">
+                        <div class="cross_input"></div>
+                    </div>
+                    <div class="contactFace">
+                        <input type="text" placeholder="Корреспондентский счет" name="checkingCo" class="contactFaceInput">
+                        <div class="cross_input"></div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="ogrn">
+                    <div>ОГРН</div>
+                    <input type="hidden" name="ogrn" id="ogrn">
+                    <div class="tableOgrn clearfix">
+                    <input type="number" class="inputTableOgrn" data-change="1" maxlength="1" min="1">
+                    <input type="number" class="inputTableOgrn" data-change="2" maxlength="1" min="1">
+                    <input type="number" class="inputTableOgrn" data-change="3" maxlength="1" min="1">
+                    <input type="number" class="inputTableOgrn" data-change="4" maxlength="1" min="1">
+                    <input type="number" class="inputTableOgrn" data-change="5" maxlength="1" min="1">
+                    <input type="number" class="inputTableOgrn" data-change="6" maxlength="1" min="1">
+                    <input type="number" class="inputTableOgrn" data-change="7" maxlength="1" min="1">
+                    <input type="number" class="inputTableOgrn" data-change="8" maxlength="1" min="1">
+                    <input type="number" class="inputTableOgrn" data-change="9" maxlength="1" min="1">
+                    <input type="number" class="inputTableOgrn" data-change="10" maxlength="1" min="1">
+                    <input type="number" class="inputTableOgrn" data-change="11" maxlength="1" min="1">
+                    <input type="number" class="inputTableOgrn" data-change="12" maxlength="1" min="1">
+                    <input type="number" class="inputTableOgrn" data-change="13" maxlength="1" min="1">
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="mainAgreementConditions">
+                    <label for="docs" class="checkbox_container">
+                        Я ознакомился с условиями
+                        <a href="#">договора</a>, согласен с ним
+                        <input id="docs" type="checkbox" name="polit" class="agreementConditionsInput" required>
+                        <span class="checkmark"></span>
+                    </label>
+                    <div class="clear"></div>
+                    <label for="docsTwo" class="checkbox_container">
+                        Я ознакомился с политикой конфидециальности и даю согласие на обработку персональных данных
+                        <input id="docsTwo" name="type" type="checkbox" name="polit" class="agreementConditionsInput" required>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="clear"></div>
+                <div class="orangeButt">
+                    <input type="submit" id="butt_add_req" value="Добавить реквизиты" class="kyes_butts_button kyes_butts_button--orange" disabled>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+{% endblock %}

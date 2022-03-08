@@ -1,0 +1,105 @@
+{% extends "basic.html" %}
+{% load static%}
+{% block content %}
+<div class="center clearfix">
+    <nav class="page_left">
+        <a href="{% url 'main:key' %}" class="nav_item clearfix">
+            <div class="nav_item_img img_key"></div>
+            <div class="nav_item_name">Ключи</div>
+        </a>
+        <a href="{% url 'main:req' %}" class="nav_item clearfix">
+            <div class="nav_item_img img_req"></div>
+            <div class="nav_item_name">Реквизиты</div>
+        </a>
+        <a href="{% url 'main:checks' %}" class="nav_item clearfix">
+            <div class="nav_item_img img_rubl"></div>
+            <div class="nav_item_name">Счета</div>
+        </a>
+        <a href="{% url 'main:help' %}" class="nav_item clearfix">
+            <div class="nav_item_img img_help"></div>
+            <div class="nav_item_name">Помощь</div>
+        </a>
+        <a href="{% url 'main:profile' %}"  class="nav_item clearfix nav_item--active">
+            <div class="nav_item_img img_profile"></div>
+            <div class="nav_item_name">Профиль</div>
+        </a>
+        <a href="{% url 'main:logout' %}" class="nav_item clearfix">
+            <div class="nav_item_img img_logout"></div>
+            <div class="nav_item_name">Выйти</div>
+        </a>
+    </nav>
+    <div class="page_right">
+        <section class="section_page">
+            <img class="page_logo" src="{% static 'media/logo.png' %}" alt="logo">
+            <div class="clear"></div>
+            <h1 class="page_title">Профиль</h1>
+            <div class="profile">
+                    <a href="#" class="profileA profileA--active">Основное</a>
+                    <a href="#" class="profileA">Смена пароля</a>
+            </div>
+            <div class="clear"></div>
+            <div class="mainProfile">
+                <div class="leftMail">Контактная почта</div>
+                <div class="centerMail">
+                    <div>{{user.email}}</div>
+                    <div>На этот адрес приходят важные уведомления, ответы тех. поддержки и платежные документы</div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="mainProfileTwo">
+                <div class="leftMail">Уведомления</div>
+                <div class="centerMail">
+                    <div class="tarif_butt">
+                        {% if user.send_messages %}
+                        <input type='checkbox' checked class='tarif_butt-switch' id='checkbox-1'>
+                        {% else %}
+                            <input type='checkbox' class='tarif_butt-switch' id='checkbox-1'>
+                        {% endif %}
+                        <label for='checkbox-1'></label>
+
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="mainProfileThree">
+                <div class="leftMail">Имя</div>
+                <div class="centerMail">
+                    <div>{{user.first_name}}</div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="mainProfileFour">
+                <div class="leftMail">Номер телефона</div>
+                <div class="centerMail" id="phone">
+                    <div>{{user.phone}}</div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="mainProfileFive">
+                <div class="leftMail">Регион</div>
+                <div class="centerMail">
+                    <div>{{user.region}}</div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="mainProfileSix">
+                <div class="leftMail">Часовой пояс</div>
+                <div class="centerMail">
+                    <div>{{user.time}}</div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="mainProfileSeven">
+                <div class="leftMail">Язык</div>
+                <div class="centerMail">
+                    <div>{{user.language}}</div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="kyesBut">
+                <input type="submit" class="kyesButBut kyesButButBlue" value="изменить данные">
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}

@@ -19,10 +19,10 @@
             <div class="nav_item_img img_help"></div>
             <div class="nav_item_name">Помощь</div>
         </a>
-        <div class="nav_item clearfix">
+        <a href="{% url 'main:profile' %}" class="nav_item clearfix">
             <div class="nav_item_img img_profile"></div>
             <div class="nav_item_name">Профиль</div>
-        </div>
+        </a>
         <a href="{% url 'main:logout' %}" class="nav_item clearfix">
             <div class="nav_item_img img_logout"></div>
             <div class="nav_item_name">Выйти</div>
