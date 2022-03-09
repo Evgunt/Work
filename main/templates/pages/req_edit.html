@@ -54,19 +54,23 @@
                 </div>
                 <div class="mainContactFace">
                     <div class="contactFace">
-                        <input type="text" placeholder="ИНН" name="inn" class="contactFaceInput" required>
+                        <input type="text" placeholder="ИНН" name="inn" class="contactFaceInput" required
+                               value="{{form.inn.value}}">
                         <div class="cross_input"></div>
                     </div>
                     <div class="contactFace">
-                        <input type="text" placeholder="КПП" name="kpp" class="contactFaceInput" required>
+                        <input type="text" placeholder="КПП" name="kpp" class="contactFaceInput" required
+                               value="{{form.kpp.value}}">
                         <div class="cross_input"></div>
                     </div>
                     <div class="contactFace">
-                        <input type="text" name="company" placeholder="Юридическое название организации" class="contactFaceInput" required>
+                        <input type="text" name="company" placeholder="Юридическое название организации"
+                               class="contactFaceInput" required value="{{form.company.value}}">
                         <div class="cross_input"></div>
                     </div>
                     <div class="contactFace">
-                        <input type="text" placeholder="Юридический адрес" name="address" class="contactFaceInput" required>
+                        <input type="text" placeholder="Юридический адрес"
+                               name="address" class="contactFaceInput" required value="{{form.address.value}}">
                         <div class="cross_input"></div>
                     </div>
                 </div>
@@ -77,16 +81,19 @@
                 <div class="clear"></div>
                 <div class="contactInfForm">
                     <div class="contactForm">
-                        <input type="text" placeholder="Контактное лицо" name="contacts" class="contactFormInput" required>
+                        <input type="text" placeholder="Контактное лицо" name="contacts"
+                               class="contactFormInput" required value="{{form.contacts.value}}">
                         <div class="cross_input"></div>
                     </div>
                     <div class="contactForm">
-                        <input type="email" placeholder="E-mail" name="email" class="contactFormInput" required value="{{user.email}}">
+                        <input type="email" placeholder="E-mail" name="email" class="contactFormInput" required
+                               value="{{form.email.value}}">
                         <div class="cross_input"></div>
                     </div>
                     <div class="clear"></div>
                     <div class="contactForm">
-                        <input type="text" placeholder="Контактный телефон" name="phone" class="contactFormInput" required value="{{user.phone}}">
+                        <input type="text" placeholder="Контактный телефон" name="phone"
+                               class="contactFormInput" required  value="{{form.phone.value}}">
                         <div class="cross_input"></div>
                     </div>
                 </div>
@@ -97,7 +104,7 @@
                 </div>
                 <div class="clear"></div>
                     <div class="originalDocuments clearfix">
-                        <select class="originalDocumentsSelect" name="docs" required>
+                        <select class="originalDocumentsSelect" data-value="{{form.docs.value}}" name="docs" required>
                             <option value="1">Мне не нужны оригиналы</option>
                             <option value="2">Мне нужны оригиналы</option>
                         </select>
@@ -110,19 +117,23 @@
                 <div class="clear"></div>
                 <div class="mainContactFace">
                     <div class="contactFace">
-                        <input type="text" placeholder="Наименование банка" name="bank" class="contactFaceInput" required>
+                        <input type="text" placeholder="Наименование банка" name="bank"
+                               value="{{form.bank.value}}" class="contactFaceInput" required>
                         <div class="cross_input"></div>
                     </div>
                     <div class="contactFace">
-                        <input type="text" placeholder="Расчетный счет" name="checking" class="contactFaceInput" required>
+                        <input type="text" placeholder="Расчетный счет" name="checking"
+                               value="{{form.checking.value}}" class="contactFaceInput" required>
                         <div class="cross_input"></div>
                     </div>
                     <div class="contactFace">
-                        <input type="text" placeholder="БИК" name="bic" class="contactFaceInput" required>
+                        <input type="text" placeholder="БИК" name="bic"
+                               value="{{form.bic.value}}" class="contactFaceInput" required>
                         <div class="cross_input"></div>
                     </div>
                     <div class="contactFace">
-                        <input type="text" placeholder="Корреспондентский счет" name="checkingCo" class="contactFaceInput" required>
+                        <input type="text" placeholder="Корреспондентский счет"
+                               value="{{form.checkingCo.value}}" name="checkingCo" class="contactFaceInput" required>
                         <div class="cross_input"></div>
                     </div>
                 </div>

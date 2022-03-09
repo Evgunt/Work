@@ -67,6 +67,7 @@ class requisites(models.Model):
     type = models.CharField(max_length=300, default="", blank=False, verbose_name='Тип')
     owner = models.ForeignKey(AdvUser, on_delete=models.CASCADE, blank=False,
                               verbose_name='Владелец', to_field="username", default="")
+    hide = models.BooleanField(default=False, verbose_name='Скрытый')
 
     class Meta:
         verbose_name_plural = 'Реквизиты'

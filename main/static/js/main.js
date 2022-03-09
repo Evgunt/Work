@@ -290,7 +290,14 @@ $( document ).ready(function() {
         let formatted = numbers.replace( re, function( all, a, b, c, d, e ){
             return ( a ? a + " " : "" ) + ( b ? b + " " : "" ) + ( c ? c + "-" : "" ) + ( d ? d + "-" : "" ) + e;
         });
-        console.log(numbers);
         $('#phone').html(formatted);
     }
+    if($('.req_item_icon').length > 0)
+    {
+        $('.req_item_icon').each(function(){
+            let letter = $(this).attr("data-name").charAt(0)
+            $(this).html(letter);
+        });
+    }
+    
 });

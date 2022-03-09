@@ -3,10 +3,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LogoutView
 from datetime import datetime
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import CreateView, TemplateView
+from django.views.generic import CreateView, TemplateView, UpdateView
 from django.views.generic.list import ListView
 from . import forms, models, utilities
-from django.utils import timezone
+
 
 def loginUser(request):
     if request.user.is_authenticated:
@@ -92,6 +92,57 @@ class req(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         context['list_req'] = models.requisites.objects.filter(owner=self.request.user.username)
         return context
+
+
+class requisites_add(LoginRequiredMixin, CreateView):
+    template_name = 'pages/req_add.html'
+    success_url = '/requisites_add'
+    form_class = forms.add_req_form
+    login_url = '/'
+
+    def post(self, request, *args, **kwargs):
+        context = {'display': 'none'}
+        form = forms.add_req_form(request.POST)
+        if form.is_valid():
+            context['display'] = 'block'
+            instance = form.save(commit=False)
+            instance.owner = self.request.user
+            if models.requisites.objects.filter(owner=request.user.username).exist():
+                instance.type = 'Дополнительный'
+            else:
+                instance.type = 'Основной'
+            instance.save()
+        return render(self.request, 'pages/req_add.html', context)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['display'] = 'none'
+        return context
+
+
+class ChangeRequisites(LoginRequiredMixin, UpdateView):
+    model = models.requisites
+    template_name = 'pages/req_edit.html'
+    form_class = forms.add_req_form
+    success_url = '/requisites'
+    login_url = '/'
+
+    def post(self, request, *args, **kwargs):
+        context = {'display': 'none'}
+        form = forms.add_req_form(request.POST)
+        if form.is_valid():
+            context['display'] = 'block'
+        return render(self.request, 'pages/req_edit.html', context)
+
+    # def get_context_data(self, queryset=None):
+    #     pk = self.request.GET.get('pk')
+    #     context = {'requs': models.requisites.objects.filter(owner=self.request.user.username, pk=pk)}
+    #     return context
+
+    def get_object(self, queryset=None):
+        if not queryset:
+            queryset = self.get_queryset()
+        return get_object_or_404(queryset, owner=self.request.user.username)
 
 
 def validateKey(request):
@@ -209,9 +260,3 @@ class profile(LoginRequiredMixin, TemplateView):
     success_url = '/profile'
     login_url = '/'
 
-
-class requisites_add(LoginRequiredMixin, CreateView):
-    template_name = 'pages/req_add.html'
-    success_url = '/requisites_add'
-    form_class = forms.add_req_form
-    login_url = '/'

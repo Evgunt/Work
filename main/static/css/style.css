@@ -1102,7 +1102,7 @@ input[type="checkbox"].tarif_butt-switch:checked + label:before {
 }
 .req_item
 {
-    padding: 20px;
+    padding: 10px;
     border: 1px solid #E5E5E5;
     border-radius: 5px;
     margin-bottom: 10px;
@@ -1111,7 +1111,6 @@ input[type="checkbox"].tarif_butt-switch:checked + label:before {
 {
     background-color: #FF8900;
     border-radius: 50%;
-    margin-top: 10px;
     float: left;
     width: 30px;
     height: 30px;
@@ -1128,7 +1127,7 @@ input[type="checkbox"].tarif_butt-switch:checked + label:before {
 { 
     font-weight: 700;
     font-size: 20px;
-    margin-bottom: 3px;
+    margin-top: 3px;
 }
 .req_item_text
 {
@@ -1147,6 +1146,7 @@ input[type="checkbox"].tarif_butt-switch:checked + label:before {
     color: #C4C4C4;
     float: left;
     margin-right: 10px;
+    margin-top: 2px;
 }
 .req_item_right_icon
 {
@@ -1923,4 +1923,29 @@ input[type="checkbox"].tarif_butt-switch:checked + label:before {
 .mainProfileSeven .centerMail {
     font-weight: 300;
     font-size: 20px;
+}
+.req_icon_hide
+{
+    background: url(../media/hide.png) center center no-repeat;
+    background-size: cover;
+    width: 24px;
+    height: 24px;
+    float: left;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-top: 3px;
+}
+.req_icon_edit
+{
+    background: url(../media/edit_orange.png) center center no-repeat;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    float: left;
+    cursor: pointer;
+    margin-top: 3px;
+}
+.marg
+{
+    margin: 55px;
 }

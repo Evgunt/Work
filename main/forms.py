@@ -76,4 +76,5 @@ class add_req_form(forms.ModelForm):
 
     class Meta:
         model = requisites
-        fields = '__all__'
+        fields = ('org', 'inn', 'kpp', 'company', 'address', 'contacts', 'email', 'phone',
+                   'docs', 'bank', 'checking', 'bic', 'checkingCo', 'ogrn', 'type')

@@ -40,29 +40,30 @@
 <!--                    <option value="1">все реквизиты</option>-->
 <!--                    <option value="2">все реквизиты</option>-->
 <!--                    <option value="3">все реквизиты</option>-->
-<!--                </select>-->
-<!--                <select class="filter_select">-->
-<!--                    <option value="1">активные</option>-->
-<!--                    <option value="1">активные</option>-->
-<!--                    <option value="1">активные</option>-->
-<!--                </select>-->
+               <!-- </select>-->
+               <select class="filter_select">-->
+                   <option value="1">Активные</option>
+                   <option value="2">Скрытые</option>
+                </select>
             </div>
             <div class="req">
-                <div class="req_item clearfix">
-                    <div class="req_item_icon">И</div>
-                    <div class="req_item_info">
-                        <div class="req_item_title">ИП Рак Иван Геннадьевич</div>
-                        <div class="req_item_text">2021/11/22-574198-adv</div>
-                    </div>
-                    <div class="req_item_right clearfix">
-                        <div class="req_item_right_text">Основной</div>
-                        <div class="req_item_right_moreIcon">
-                            <div class="req_item_right_moreIcon_circol"></div>
-                            <div class="req_item_right_moreIcon_circol"></div>
-                            <div class="req_item_right_moreIcon_circol"></div>
+                {% if not list_req %}
+                    <p class="empty">Пока нет реквизитов</p>
+                {% else %}
+                    {% for req in list_req %}
+                    <div class="req_item clearfix">
+                        <div class="req_item_icon" data-name="{{req.org}}"></div>
+                        <div class="req_item_info">
+                            <div class="req_item_title">{{req.company}}</div>
+                        </div>
+                        <div class="req_item_right clearfix">
+                            <div class="req_item_right_text">{{req.type}}</div>
+                            <div class="req_icon_hide" data-hide="{{req.pk}}"></div>
+                            <a href="{% url 'main:ChangeRequisites' editPk=req.pk %}" class="req_icon_edit"></a>
                         </div>
                     </div>
-                </div>
+                    {% endfor %}
+                {%endif%}
             </div>
         </section>
     </div>
