@@ -59,7 +59,7 @@
                         <div class="req_item_right clearfix">
                             <div class="req_item_right_text">{{req.type}}</div>
                             <div class="req_icon_hide" data-hide="{{req.pk}}"></div>
-                            <a href="{% url 'main:ChangeRequisites' editPk=req.pk %}" class="req_icon_edit"></a>
+                            <a href="{% url 'main:ChangeRequisites' pk=req.pk %}" class="req_icon_edit"></a>
                         </div>
                     </div>
                     {% endfor %}

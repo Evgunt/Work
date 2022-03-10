@@ -47,6 +47,7 @@
             <h1 class="page_title">Новый договор</h1>
             <form method="post">
                 {% csrf_token %}
+                <input type="hidden" id="org" value="{{form.org.value}}">
                 <div class="chekFace">
                     <div><input type="radio" name="org" value="Юридическое лицо" checked required>Юридическое лицо</div>
                     <div><input type="radio" name="org" value="Индивидуальный предприниматель" required>Индивидуальный предприниматель</div>
@@ -105,8 +106,8 @@
                 <div class="clear"></div>
                     <div class="originalDocuments clearfix">
                         <select class="originalDocumentsSelect" data-value="{{form.docs.value}}" name="docs" required>
-                            <option value="1">Мне не нужны оригиналы</option>
-                            <option value="2">Мне нужны оригиналы</option>
+                            <option value="Мне не нужны оригиналы">Мне не нужны оригиналы</option>
+                            <option value="Мне нужны оригиналы">Мне нужны оригиналы</option>
                         </select>
                     </div>
                 <div class="clear"></div>
@@ -140,41 +141,26 @@
                 <div class="clear"></div>
                 <div class="ogrn">
                     <div>ОГРН</div>
-                    <input type="hidden" name="ogrn" id="ogrn">
+                    <input type="hidden" name="ogrn" id="ogrn" value="{{form.ogrn.value}}">
                     <div class="tableOgrn clearfix">
-                    <input type="number" class="inputTableOgrn" data-change="1" maxlength="1" min="1">
-                    <input type="number" class="inputTableOgrn" data-change="2" maxlength="1" min="1">
-                    <input type="number" class="inputTableOgrn" data-change="3" maxlength="1" min="1">
-                    <input type="number" class="inputTableOgrn" data-change="4" maxlength="1" min="1">
-                    <input type="number" class="inputTableOgrn" data-change="5" maxlength="1" min="1">
-                    <input type="number" class="inputTableOgrn" data-change="6" maxlength="1" min="1">
-                    <input type="number" class="inputTableOgrn" data-change="7" maxlength="1" min="1">
-                    <input type="number" class="inputTableOgrn" data-change="8" maxlength="1" min="1">
-                    <input type="number" class="inputTableOgrn" data-change="9" maxlength="1" min="1">
-                    <input type="number" class="inputTableOgrn" data-change="10" maxlength="1" min="1">
-                    <input type="number" class="inputTableOgrn" data-change="11" maxlength="1" min="1">
-                    <input type="number" class="inputTableOgrn" data-change="12" maxlength="1" min="1">
-                    <input type="number" class="inputTableOgrn" data-change="13" maxlength="1" min="1">
+                        <input type="number" class="inputTableOgrn" data-change="1" maxlength="1" min="1">
+                        <input type="number" class="inputTableOgrn" data-change="2" maxlength="1" min="1">
+                        <input type="number" class="inputTableOgrn" data-change="3" maxlength="1" min="1">
+                        <input type="number" class="inputTableOgrn" data-change="4" maxlength="1" min="1">
+                        <input type="number" class="inputTableOgrn" data-change="5" maxlength="1" min="1">
+                        <input type="number" class="inputTableOgrn" data-change="6" maxlength="1" min="1">
+                        <input type="number" class="inputTableOgrn" data-change="7" maxlength="1" min="1">
+                        <input type="number" class="inputTableOgrn" data-change="8" maxlength="1" min="1">
+                        <input type="number" class="inputTableOgrn" data-change="9" maxlength="1" min="1">
+                        <input type="number" class="inputTableOgrn" data-change="10" maxlength="1" min="1">
+                        <input type="number" class="inputTableOgrn" data-change="11" maxlength="1" min="1">
+                        <input type="number" class="inputTableOgrn" data-change="12" maxlength="1" min="1">
+                        <input type="number" class="inputTableOgrn" data-change="13" maxlength="1" min="1">
                     </div>
                 </div>
                 <div class="clear"></div>
-                <div class="mainAgreementConditions">
-                    <label for="docs" class="checkbox_container">
-                        Я ознакомился с условиями
-                        <a href="#">договора</a>, согласен с ним
-                        <input id="docs" type="checkbox" name="polit" class="agreementConditionsInput" required>
-                        <span class="checkmark"></span>
-                    </label>
-                    <div class="clear"></div>
-                    <label for="docsTwo" class="checkbox_container">
-                        Я ознакомился с политикой конфидециальности и даю согласие на обработку персональных данных
-                        <input id="docsTwo" name="type" type="checkbox" name="polit" class="agreementConditionsInput" required>
-                        <span class="checkmark"></span>
-                    </label>
-                </div>
-                <div class="clear"></div>
                 <div class="orangeButt">
-                    <input type="submit" id="butt_add_req" value="Добавить реквизиты" class="kyes_butts_button kyes_butts_button--orange" disabled>
+                    <input type="submit" id="butt_add_req" value="Изменить реквизиты" class="kyes_butts_button kyes_butts_button--orange">
                 </div>
             </form>
         </section>

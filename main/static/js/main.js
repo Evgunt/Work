@@ -299,5 +299,33 @@ $( document ).ready(function() {
             $(this).html(letter);
         });
     }
+    if($('#ogrn').length > 0)
+    {
+        let ogrn = $('#ogrn').val()
+        if(ogrn !='')
+        {
+            for(let i=0; i<13; i++)
+            {
+                let letter = $('#ogrn').val().charAt(i);
+                $('.inputTableOgrn[data-change="'+(i+1)+'"]').val(letter)
+            }
+        }
+    }
+    if($('.originalDocumentsSelect').length > 0)
+    {
+        let attr = $('.originalDocumentsSelect').attr('data-value');
+        if(attr != '')
+        {
+            $('.originalDocumentsSelect').children('option[value="'+attr+'"]').attr('selected', "true")
+        }
+    }
+    if($('#org').length > 0)
+    {
+        let attr = $('#org').val();
+        if(attr != '')
+        {
+            $('.chekFace').find('input[value="'+attr+'"]').attr("checked", "checked")
+        }
+    }
     
 });

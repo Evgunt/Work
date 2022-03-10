@@ -127,18 +127,6 @@ class ChangeRequisites(LoginRequiredMixin, UpdateView):
     success_url = '/requisites'
     login_url = '/'
 
-    def post(self, request, *args, **kwargs):
-        context = {'display': 'none'}
-        form = forms.add_req_form(request.POST)
-        if form.is_valid():
-            context['display'] = 'block'
-        return render(self.request, 'pages/req_edit.html', context)
-
-    # def get_context_data(self, queryset=None):
-    #     pk = self.request.GET.get('pk')
-    #     context = {'requs': models.requisites.objects.filter(owner=self.request.user.username, pk=pk)}
-    #     return context
-
     def get_object(self, queryset=None):
         if not queryset:
             queryset = self.get_queryset()

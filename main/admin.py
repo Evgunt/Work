@@ -43,12 +43,12 @@ class keysModel(admin.ModelAdmin):
 
 class requisitesModel(admin.ModelAdmin):
     fields = ['org', ('inn', 'kpp', 'company', 'address'), ('contacts', 'email', 'phone'),
-              'docs', ('bank', 'checking', 'bic', 'checkingCo'), 'ogrn', 'owner']
-    
-    def has_change_permission(self, request, obj=None):
-        return False    
+              'docs', ('bank', 'checking', 'bic', 'checkingCo'), 'ogrn', 'owner', 'type']
 
-    def has_dellete_permission(self, request, obj=None):
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
         return False
 
 
