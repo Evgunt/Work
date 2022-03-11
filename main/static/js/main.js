@@ -212,7 +212,6 @@ $( document ).ready(function() {
         let kyes = $('#delKeys').val();
         let keysAr = kyes.split(';');
         let json = JSON.stringify(keysAr);
-        console.log(json);
         $.ajax({
             url: '/validateKey',
             data: {'delKeys': kyes, 'type': 2},
@@ -240,7 +239,6 @@ $( document ).ready(function() {
         {
             $(this).parent().find("input").attr('type', "text");
             $(this).addClass('eye_input--close');
-
         }
         else
         {
@@ -253,7 +251,6 @@ $( document ).ready(function() {
         $(this).html(summ_js.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0}));
     });
     $("#file_help").change(function(){
-        console.log(this.files);
         if(this.files.length > 0)
         {
             let filesStr = '';
@@ -327,5 +324,4 @@ $( document ).ready(function() {
             $('.chekFace').find('input[value="'+attr+'"]').attr("checked", "checked")
         }
     }
-    
 });

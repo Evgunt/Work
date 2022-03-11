@@ -36,32 +36,21 @@
             <div class="kyes_butts">
                 <a href="{% url 'main:requisites_add' %}"
                    class="kyes_butts_button kyes_butts_button--orange">Добавить реквизиты</a>
-<!--                <select class="filter_select">-->
-<!--                    <option value="1">все реквизиты</option>-->
-<!--                    <option value="2">все реквизиты</option>-->
-<!--                    <option value="3">все реквизиты</option>-->
-               <!-- </select>-->
-               <select class="filter_select">-->
-                   <option value="1">Активные</option>
-                   <option value="2">Скрытые</option>
-                </select>
             </div>
             <div class="req">
                 {% if not list_req %}
                     <p class="empty">Пока нет реквизитов</p>
                 {% else %}
                     {% for req in list_req %}
-                    <div class="req_item clearfix">
-                        <div class="req_item_icon" data-name="{{req.org}}"></div>
-                        <div class="req_item_info">
-                            <div class="req_item_title">{{req.company}}</div>
+                        <div class="req_item clearfix" data-hide="{{req.hide}}">
+                            <div class="req_item_icon" data-name="{{req.org}}"></div>
+                            <div class="req_item_info">
+                                <div class="req_item_title">{{req.company}}</div>
+                            </div>
+                          <div class="req_item_right clearfix">
+                                <a href="{% url 'main:ChangeRequisites' pk=req.pk %}" class="req_icon_edit"></a>
+                            </div>
                         </div>
-                        <div class="req_item_right clearfix">
-                            <div class="req_item_right_text">{{req.type}}</div>
-                            <div class="req_icon_hide" data-hide="{{req.pk}}"></div>
-                            <a href="{% url 'main:ChangeRequisites' pk=req.pk %}" class="req_icon_edit"></a>
-                        </div>
-                    </div>
                     {% endfor %}
                 {%endif%}
             </div>

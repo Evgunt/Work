@@ -1,0 +1,75 @@
+{% extends "basic.html" %}
+{% load static%}
+{% block content %}
+<div class="center clearfix">
+    <nav class="page_left">
+        <a href="{% url 'main:key' %}" class="nav_item clearfix">
+            <div class="nav_item_img img_key"></div>
+            <div class="nav_item_name">Ключи</div>
+        </a>
+        <a href="{% url 'main:req' %}" class="nav_item clearfix">
+            <div class="nav_item_img img_req"></div>
+            <div class="nav_item_name">Реквизиты</div>
+        </a>
+        <a href="{% url 'main:checks' %}" class="nav_item clearfix">
+            <div class="nav_item_img img_rubl"></div>
+            <div class="nav_item_name">Счета</div>
+        </a>
+        <a href="{% url 'main:help' %}" class="nav_item clearfix">
+            <div class="nav_item_img img_help"></div>
+            <div class="nav_item_name">Помощь</div>
+        </a>
+        <a href="{% url 'main:profile' %}"  class="nav_item clearfix nav_item--active">
+            <div class="nav_item_img img_profile"></div>
+            <div class="nav_item_name">Профиль</div>
+        </a>
+        <a href="{% url 'main:logout' %}" class="nav_item clearfix">
+            <div class="nav_item_img img_logout"></div>
+            <div class="nav_item_name">Выйти</div>
+        </a>
+    </nav>
+    <div class="page_right">
+            <img class="page_logo" src="{% static 'media/logo.png' %}" alt="logo">
+            <div class="clear"></div>
+            <h1 class="page_title">Профиль</h1>
+        <div class="profileTwo">
+            <a href="{% url 'main:profile' %}" class="profileA">Основное</a>
+            <a href="{% url 'main:changePass' %}" class="profileA profileA--active">Смена пароля</a>
+        </div>
+        <div class="clear"></div>
+        <form method="post">
+                {% csrf_token %}
+            <div class="changePinCode">
+                <p>Старый пароль</p>
+                <label for="password">
+                    <input type="password" id="password" name="old_password" class="inputMain" required="">
+                    <div class="eye_input"></div>
+                    <div class="help_text">{{form.errors.old_password}}</div>
+                </label>
+            </div>
+            <div class="clear"></div>
+            <div class="changePinCodeTwo">
+                <p>Новый пароль</p>
+                <label for="password2">
+                    <input type="password" id="password2" name="new_password1" class="inputMain" required="">
+                    <div class="eye_input"></div>
+                    <div class="help_text">{{form.errors.new_password1}}</div>
+                </label>
+            </div>
+            <div class="clear"></div>
+            <div class="changePinCodeThree">
+                <p>Повторите пароль</p>
+                <label for="password3">
+                    <input type="password" id="password3" name="new_password2" class="inputMain" required="">
+                    <div class="eye_input"></div>
+                    <div class="help_text">{{form.errors.new_password2}}</div>
+                </label>
+            </div>
+            <div class="clear"></div>
+            <div class="changePass">
+                <input type="submit" class="kyesButBut kyesButButWhite" value="ИЗМЕНИТЬ ПАРОЛЬ">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

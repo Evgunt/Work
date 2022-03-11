@@ -64,7 +64,7 @@ class requisites(models.Model):
     bic = models.CharField(max_length=300, default="", blank=False, verbose_name='БИК')
     checkingCo = models.CharField(max_length=300, default="", blank=False, verbose_name='Корреспондентский счет')
     ogrn = models.CharField(max_length=300, default="", blank=False, verbose_name='ОГРН')
-    type = models.CharField(max_length=300, default="", blank=False, verbose_name='Тип')
+    type = models.CharField(max_length=300, default="", blank=True, verbose_name='Тип')
     owner = models.ForeignKey(AdvUser, on_delete=models.CASCADE, blank=False,
                               verbose_name='Владелец', to_field="username", default="")
     hide = models.BooleanField(default=False, verbose_name='Скрытый')

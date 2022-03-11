@@ -52,27 +52,32 @@
                     <div><input type="radio" name="org" value="Юридическое лицо" checked required>Юридическое лицо</div>
                     <div><input type="radio" name="org" value="Индивидуальный предприниматель" required>Индивидуальный предприниматель</div>
                     <div><input type="radio" name="org" value="Физическое лицо" required>Физическое лицо</div>
+                    <div class="help_text">{{form.errors.inn}}</div>
                 </div>
                 <div class="mainContactFace">
                     <div class="contactFace">
                         <input type="text" placeholder="ИНН" name="inn" class="contactFaceInput" required
                                value="{{form.inn.value}}">
                         <div class="cross_input"></div>
+                        <div class="help_text">{{form.errors.inn}}</div>
                     </div>
                     <div class="contactFace">
                         <input type="text" placeholder="КПП" name="kpp" class="contactFaceInput" required
                                value="{{form.kpp.value}}">
                         <div class="cross_input"></div>
+                        <div class="help_text">{{form.errors.kpp}}</div>
                     </div>
                     <div class="contactFace">
                         <input type="text" name="company" placeholder="Юридическое название организации"
                                class="contactFaceInput" required value="{{form.company.value}}">
                         <div class="cross_input"></div>
+                        <div class="help_text">{{form.errors.company}}</div>
                     </div>
                     <div class="contactFace">
                         <input type="text" placeholder="Юридический адрес"
                                name="address" class="contactFaceInput" required value="{{form.address.value}}">
                         <div class="cross_input"></div>
+                        <div class="help_text">{{form.errors.address}}</div>
                     </div>
                 </div>
                 <div class="contactInf">
@@ -85,17 +90,20 @@
                         <input type="text" placeholder="Контактное лицо" name="contacts"
                                class="contactFormInput" required value="{{form.contacts.value}}">
                         <div class="cross_input"></div>
+                        <div class="help_text">{{form.errors.contacts}}</div>
                     </div>
                     <div class="contactForm">
                         <input type="email" placeholder="E-mail" name="email" class="contactFormInput" required
                                value="{{form.email.value}}">
                         <div class="cross_input"></div>
+                        <div class="help_text">{{form.errors.email}}</div>
                     </div>
                     <div class="clear"></div>
                     <div class="contactForm">
                         <input type="text" placeholder="Контактный телефон" name="phone"
                                class="contactFormInput" required  value="{{form.phone.value}}">
                         <div class="cross_input"></div>
+                        <div class="help_text">{{form.errors.phone}}</div>
                     </div>
                 </div>
                 <div class="clear"></div>
@@ -109,6 +117,7 @@
                             <option value="Мне не нужны оригиналы">Мне не нужны оригиналы</option>
                             <option value="Мне нужны оригиналы">Мне нужны оригиналы</option>
                         </select>
+                        <div class="help_text">{{form.errors.docs}}</div>
                     </div>
                 <div class="clear"></div>
                 <div class="bank">
@@ -121,21 +130,25 @@
                         <input type="text" placeholder="Наименование банка" name="bank"
                                value="{{form.bank.value}}" class="contactFaceInput" required>
                         <div class="cross_input"></div>
+                        <div class="help_text">{{form.errors.bank}}</div>
                     </div>
                     <div class="contactFace">
                         <input type="text" placeholder="Расчетный счет" name="checking"
                                value="{{form.checking.value}}" class="contactFaceInput" required>
                         <div class="cross_input"></div>
+                        <div class="help_text">{{form.errors.checking}}</div>
                     </div>
                     <div class="contactFace">
                         <input type="text" placeholder="БИК" name="bic"
                                value="{{form.bic.value}}" class="contactFaceInput" required>
                         <div class="cross_input"></div>
+                        <div class="help_text">{{form.errors.bic}}</div>
                     </div>
                     <div class="contactFace">
                         <input type="text" placeholder="Корреспондентский счет"
                                value="{{form.checkingCo.value}}" name="checkingCo" class="contactFaceInput" required>
                         <div class="cross_input"></div>
+                        <div class="help_text">{{form.errors.checkingCo}}</div>
                     </div>
                 </div>
                 <div class="clear"></div>
@@ -157,6 +170,7 @@
                         <input type="number" class="inputTableOgrn" data-change="12" maxlength="1" min="1">
                         <input type="number" class="inputTableOgrn" data-change="13" maxlength="1" min="1">
                     </div>
+                    <div class="help_text">{{form.errors.ogrn}}</div>
                 </div>
                 <div class="clear"></div>
                 <div class="orangeButt">

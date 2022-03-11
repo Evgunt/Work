@@ -305,7 +305,7 @@ body, html, main
 .eye_input--close
 {
     
-    background-image: url(../media/eye_close.png);
+    background-image: url(../media/eye_close.png) !important;
 }
 .dark_errors
 {
@@ -1948,4 +1948,162 @@ input[type="checkbox"].tarif_butt-switch:checked + label:before {
 .marg
 {
     margin: 55px;
+}
+
+.changePinCode p {
+    margin-right: 54px;
+    margin-top: 43px;
+    font-weight: 300;
+    font-size: 20px;
+    color: #C4C4C4;
+    margin-left: 55px;
+    float: left;
+}
+
+.changePinCode > label {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    outline: 0;
+    display: block;
+    position: relative;
+    width: 472px;
+    float: left;
+    margin-top: 31px;
+}
+.changePinCode > label > input {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    outline: 0;
+    border: 1.75px solid #E5E5E5;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    width: 100%;
+    position: relative;
+}
+.changePinCode .eye_input {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    outline: 0;
+    background-image: url(../media/eye.png);
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 20px;
+    position: absolute;
+    top: 23%;
+    right: 5%;
+    cursor: pointer;
+}
+.changePinCodeTwo p {
+    font-weight: 300;
+    font-size: 20px;
+    color: #C4C4C4;
+    margin-left: 55px;
+    float: left;
+    margin-top: 10px;
+}
+
+.changePinCodeTwo > label {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    outline: 0;
+    display: block;
+    position: relative;
+    width: 472px;
+    float: left;
+    margin-left: 62px;
+}
+.changePinCodeTwo > label > input {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    outline: 0;
+    border: 1.75px solid #E5E5E5;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    width: 100%;
+    position: relative;
+}
+.changePinCodeTwo .eye_input {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    outline: 0;
+    background-image: url(../media/eye.png);
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 20px;
+    position: absolute;
+    top: 23%;
+    right: 5%;
+    cursor: pointer;
+}
+.changePinCodeThree p {
+    font-weight: 300;
+    font-size: 20px;
+    color: #C4C4C4;
+    margin-left: 55px;
+    float: left;
+    margin-top: 10px;
+}
+
+.changePinCodeThree > label {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    outline: 0;
+    display: block;
+    position: relative;
+    width: 472px;
+    float: left;
+    margin-left: 26px;
+}
+.changePinCodeThree > label > input {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    outline: 0;
+    border: 1.75px solid #E5E5E5;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    width: 100%;
+    position: relative;
+}
+.changePinCodeThree .eye_input {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    outline: 0;
+    background-image: url(../media/eye.png);
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 20px;
+    position: absolute;
+    top: 15px;
+    right: 5%;
+    cursor: pointer;
+}
+.changePass {
+    float: left;
+    margin-left: 250px;
+    margin-top: 18px;
+}
+.changePass input {
+    background-color: #E5E5E5;
+    cursor: pointer;
 }

@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LogoutView
+from django.contrib.auth.views import LogoutView, PasswordChangeView
 from datetime import datetime
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import CreateView, TemplateView, UpdateView
@@ -107,7 +107,7 @@ class requisites_add(LoginRequiredMixin, CreateView):
             context['display'] = 'block'
             instance = form.save(commit=False)
             instance.owner = self.request.user
-            if models.requisites.objects.filter(owner=request.user.username).exist():
+            if models.requisites.objects.filter(owner=request.user.username).exists():
                 instance.type = 'Дополнительный'
             else:
                 instance.type = 'Основной'
@@ -126,11 +126,13 @@ class ChangeRequisites(LoginRequiredMixin, UpdateView):
     form_class = forms.add_req_form
     success_url = '/requisites'
     login_url = '/'
+    pk_url_kwarg = id
 
     def get_object(self, queryset=None):
         if not queryset:
             queryset = self.get_queryset()
-        return get_object_or_404(queryset, owner=self.request.user.username)
+        pk = self.kwargs.get('pk')
+        return get_object_or_404(queryset, pk=pk, owner=self.request.user.username)
 
 
 def validateKey(request):
@@ -248,3 +250,8 @@ class profile(LoginRequiredMixin, TemplateView):
     success_url = '/profile'
     login_url = '/'
 
+
+class changePass(LoginRequiredMixin, PasswordChangeView):
+    template_name = 'user/changePass.html'
+    success_url = '/profile'
+    login_url = '/'
