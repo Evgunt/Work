@@ -96,7 +96,7 @@
             </div>
             <div class="clear"></div>
             <div class="kyesBut">
-                <input type="submit" class="kyesButBut kyesButButBlue marg" value="изменить данные">
+                <a href="{% url 'main:editProfile' pk=user.pk %}" type="submit" class="kyesButBut kyesButButBlue marg" >изменить данные</a>
             </div>
         </section>
     </div>

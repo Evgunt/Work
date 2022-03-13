@@ -133,6 +133,23 @@ $( document ).ready(function() {
         else
             $('.kyes_butts_button--white').addClass("hidden_for_click");
     });
+    $('.cell_item_text').click(function(){
+        let parent = $(this).parent().parent()
+        if(parent.hasClass("cell-active"))
+        {
+            i--;
+            parent.removeClass("cell-active");
+        }
+        else
+        {   
+            i++;
+            parent.addClass("cell-active");
+        }
+        if(i>0)
+            $('.kyes_butts_button--white').removeClass("hidden_for_click");
+        else
+            $('.kyes_butts_button--white').addClass("hidden_for_click");
+    });
     $('.tarif_butts').click(function(){
         let price = $(this).attr('data-price');
         let col = parseInt($(this).attr('data-col'));
@@ -324,4 +341,51 @@ $( document ).ready(function() {
             $('.chekFace').find('input[value="'+attr+'"]').attr("checked", "checked")
         }
     }
+    $('.pay_hide').change(function(){
+        if(this.files.length > 0)
+        {
+            let id = $(this).parent().find('input[name="pk"]').val();
+            $('form[data-form="'+id+'"]').submit();
+            console.log(id);
+            console.log($('form[data-form="'+id+'"]'));
+        }
+    });
+    if($('.tabelCellUnion_text').length > 0)
+    {
+        $('.tabelCellUnion_text').each(function(){
+            let a = $(this).attr('data-href');
+            let arrs = a.split('/');
+            let name = arrs.slice(-1);
+            $(this).html(name);
+        });
+    }
+    if($('.profile_select').length > 0)
+    {
+        $('.profile_select').each(function(){
+            let time = $(this).attr('data-value');
+            $(this).children('option[value="'+time+'"]').attr('selected', "true")
+        });
+    }
+    $('#phone2').blur(function (){ 
+        let numbers = $(this).val();
+        console.log(numbers)
+        let re = /(?:([\d]{1,}?))??(?:([\d]{1,3}?))??(?:([\d]{1,3}?))??(?:([\d]{2}))??([\d]{2})$/;
+        let formatted = numbers.replace( re, function( all, a, b, c, d, e ){
+            return ( a ? a + " " : "" ) + ( b ? b + " " : "" ) + ( c ? c + "-" : "" ) + ( d ? d + "-" : "" ) + e;
+        });
+        $(this).val(formatted);
+    });
+    $('.cell_item[data-type="name"]').click(function(){
+        let change = $(this).attr('data-change');
+        let input = $('.cell_item_input[data-change="'+change+'"]');
+        let val = input.val();
+        $('.cell_item_input').hide();
+        input.show().val('').focus().val(val);
+        $(this).hide();
+    });
+    $('.cell_item_input').blur(function(){
+        let pk = $(this).attr('data-change');
+        $('form[data-change="'+pk+'"]').submit();
+        $('.cell_item[data-type="name"]').show();
+    });
 });

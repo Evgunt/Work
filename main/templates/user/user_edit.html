@@ -1,0 +1,127 @@
+{% extends "basic.html" %}
+{% load static%}
+{% block content %}
+<div class="center clearfix">
+    <nav class="page_left">
+        <a href="{% url 'main:key' %}" class="nav_item clearfix">
+            <div class="nav_item_img img_key"></div>
+            <div class="nav_item_name">Ключи</div>
+        </a>
+        <a href="{% url 'main:req' %}" class="nav_item clearfix">
+            <div class="nav_item_img img_req"></div>
+            <div class="nav_item_name">Реквизиты</div>
+        </a>
+        <a href="{% url 'main:checks' %}" class="nav_item clearfix">
+            <div class="nav_item_img img_rubl"></div>
+            <div class="nav_item_name">Счета</div>
+        </a>
+        <a href="{% url 'main:help' %}" class="nav_item clearfix">
+            <div class="nav_item_img img_help"></div>
+            <div class="nav_item_name">Помощь</div>
+        </a>
+        <a href="{% url 'main:profile' %}"  class="nav_item clearfix nav_item--active">
+            <div class="nav_item_img img_profile"></div>
+            <div class="nav_item_name">Профиль</div>
+        </a>
+        <a href="{% url 'main:logout' %}" class="nav_item clearfix">
+            <div class="nav_item_img img_logout"></div>
+            <div class="nav_item_name">Выйти</div>
+        </a>
+    </nav>
+    <div class="page_right">
+            <img class="page_logo" src="{% static 'media/logo.png' %}" alt="logo">
+            <div class="clear"></div>
+            <h1 class="page_title">Изменение профиля</h1>
+        <div class="clear"></div>
+        <form method="post" class="prof_edit_form">
+                {% csrf_token %}
+            <div class="changePinCode">
+                <p>Контактная почта</p>
+                <label for="email2">
+                    <input type="email" id="email2" name="email" class="inputMain" required value="{{form.email.value}}">
+                    <div class="help_text">{{form.errors.email}}</div>
+                </label>
+            </div>
+            <div class="clear"></div>
+            <div class="changePinCode">
+                <p>Имя пользователя</p>
+                <label for="first_name">
+                    <input type="text" id="first_name" name="first_name" class="inputMain" required value="{{form.first_name.value}}">
+                    <div class="help_text">{{form.errors.first_name}}</div>
+                </label>
+            </div>
+            <div class="clear"></div>
+             <div class="changePinCode">
+                <p>Номер телефона</p>
+                <label for="phone2">
+                    <input type="text" id="phone2" name="phone" class="inputMain" required value="{{form.phone.value}}">
+                    <div class="help_text">{{form.errors.phone}}</div>
+                </label>
+            </div>
+            <div class="clear"></div>
+            <div class="changePinCode">
+                <p>Регион</p>
+                <label for="region">
+                    <input type="text" id="region" name="region" class="inputMain" required value="{{form.region.value}}">
+                    <div class="help_text">{{form.errors.region}}</div>
+                </label>
+            </div>
+            <div class="clear"></div>
+            <div class="changePinCode">
+                <p>Часовой пояс</p>
+                <label for="time">
+                    <select class="profile_select" data-value="{{form.time.value}}" name="time" id="time">
+                        <option value="GMT -12">(GMT -12:00) Эниветок, Кваджалейн </option>
+                        <option value="GMT -11">(GMT -11:00) Остров Мидуэй, Самоа </option>
+                        <option value="GMT -10">(GMT -10:00) Гавайи </option>
+                        <option value="GMT -9">(GMT -9:00) Аляска </option>
+                        <option value="GMT -8">(GMT -8:00) Тихоокеанское время (США и Канада) </option>
+                        <option value="GMT -7">(GMT -7:00) Горное время (США и Канада) </option>
+                        <option value="GMT -6">(GMT -6:00) Центральное время (США и Канада), Мехико</option>
+                        <option value="GMT -5">(GMT -5:00) Восточное время (США и Канада), Богота, Лима </option>
+                        <option value="GMT -4">(GMT -4:00) Атлантическое время (Канада), Каракас, Ла-Пас </option>
+                        <option value="GMT -3:30">(GMT -3:30) Ньюфаундленд </option>
+                        <option value="GMT -3">(GMT -3:00) Бразилия, Буэнос-Айрес, Джорджтаун </option>
+                        <option value="GMT -2">(GMT -2:00) Срединно-Атлантического </option>
+                        <option value="GMT -1">(GMT -1:00) Азорские острова, острова Зеленого Мыса </option>
+                        <option value="GMT 0">(GMT 0:0) Время Западной Европе, Лондон, Лиссабон, Касабланка </option>
+                        <option value="GMT +1">(GMT +1:00) Брюссель, Копенгаген, Мадрид, Париж </option>
+                        <option value="GMT +2">(GMT +2:00) Киев, Калининград, Южная Африка </option>
+                        <option value="GMT +3">(GMT +3:00) Багдад, Эр-Рияд, Москва, Санкт-Петербург</option>
+                        <option value="GMT +3:30">(GMT +3:30) Тегеран </option>
+                        <option value="GMT +4">(GMT +4:00) Абу-Даби, Мускат, Баку, Тбилиси</option>
+                        <option value="GMT +4:30">(GMT +4:30) Кабул </option>
+                        <option value="GMT +5">(GMT +5:00) Екатеринбург, Исламабад, Карачи, Ташкент</option>
+                        <option value="GMT +5:30">(GMT +5:30) Бомбей, Калькутта, Мадрас, Нью-Дели</option>
+                        <option value="GMT +5:45">(GMT +5:45) Катманду</option>
+                        <option value="GMT +6">(GMT +6:00) Алматы, Дакке, Коломбо </option>
+                        <option value="GMT +7">(GMT +7:00) Бангкок, Ханой, Джакарта</option>
+                        <option value="GMT +8">(GMT +8:00) Пекин, Перт, Сингапур, Гонконг</option>
+                        <option value="GMT +9">(GMT +9:00) Токио, Сеул, Осака, Саппоро, Якутск</option>
+                        <option value="GMT +9:30">(GMT +9:30) Аделаида, Дарвин </option>
+                        <option value="GMT +10">(GMT +10:00) Восточная Австралия, Гуам, Владивосток </option>
+                        <option value="GMT +11">(GMT +11:00) Магадан, Соломоновы острова, Новая Каледония</option>
+                        <option value="GMT +12">(GMT +12:00) Окленд, Веллингтон, Фиджи, Камчатка</option>
+                    </select>
+                    <div class="help_text">{{form.errors.phone}}</div>
+                </label>
+            </div>
+            <div class="clear"></div>
+            <div class="changePinCode">
+                <p>Язык</p>
+                <label for="language">
+                    <select name="language" id="language" class="profile_select" data-value="{{form.language.value}}">
+                        <option value="Русский">Русский</option>
+                        <option value="Англиский">Англиский</option>
+                    </select>
+                    <div class="help_text">{{form.errors.language}}</div>
+                </label>
+            </div>
+            {{form.errors}}
+            <div class="changePass">
+                <input type="submit" class="kyesButBut kyesButButWhite" value="ИЗМЕНИТЬ">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

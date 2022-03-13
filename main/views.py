@@ -2,6 +2,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LogoutView, PasswordChangeView
 from datetime import datetime
+
+from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import CreateView, TemplateView, UpdateView
 from django.views.generic.list import ListView
@@ -35,12 +37,16 @@ def loginUser(request):
                     context['key'] = 'Несуществующий ключ'
             elif username != '':
                 context = {'text': 'Войти по ключу', 'key_display': 'none', 'email_display': 'block'}
-                success = authenticate(username=username, password=password)
-                if success is None:
-                    context['password'] = 'Неверный пароль'
+                if models.AdvUser.objects.filter(Q(username=username) | Q(email=username)).exists():
+                    AdvUser = models.AdvUser.objects.get(Q(username=username) | Q(email=username))
+                    success = authenticate(username=AdvUser.username, password=password)
+                    if success is None:
+                        context['password'] = 'Неверный пароль'
+                    else:
+                        login(request, success)
+                        return redirect('/keys')
                 else:
-                    login(request, success)
-                    return redirect('/keys')
+                    context['password'] = 'Неверный пароль'
             else:
                 context['username'] = 'Обязательное поле'
                 context['key'] = 'Обязательное поле'
@@ -82,6 +88,16 @@ class key(LoginRequiredMixin, TemplateView):
         year = current_time.strftime("%Y")
         context['first_date'] = f'{day}.{month}.{year}'
         return context
+
+    def post(self, request, *args, **kwargs):
+        pk = request.POST['pk']
+        name = request.POST['name']
+        if name != '':
+            keysBd = models.keys.objects.get(pk=pk)
+            keysBd.name = name
+            keysBd.save()
+        context = self.get_context_data(**kwargs)
+        return render(request, self.template_name, context)
 
 
 class req(LoginRequiredMixin, TemplateView):
@@ -206,8 +222,9 @@ def password_email(request, sign):
     return render(request, template, context)
 
 
-class checks(LoginRequiredMixin, ListView):
+class checks(LoginRequiredMixin, CreateView):
     model = models.checks
+    form_class = forms.UploadFileForm
     template_name = 'pages/checks.html'
     login_url = '/'
 
@@ -215,6 +232,18 @@ class checks(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['list_checks'] = models.checks.objects.filter(owner=self.request.user.username)
         return context
+
+    def post(self, request, *args, **kwargs):
+        context = {'success': 0, 'list_checks': models.checks.objects.filter(owner=request.user.username)}
+        form = forms.UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            if models.checks.objects.filter(pk=request.POST['pk'], owner=request.user.username).exists():
+                check = models.checks.objects.get(pk=request.POST['pk'], owner=request.user.username)
+                check.pay = request.FILES['pay']
+                check.save()
+            context['success'] = 1
+
+        return render(request, 'pages/checks.html', context)
 
 
 class Help(LoginRequiredMixin, CreateView):
@@ -247,7 +276,6 @@ class Help(LoginRequiredMixin, CreateView):
 
 class profile(LoginRequiredMixin, TemplateView):
     template_name = 'pages/profile.html'
-    success_url = '/profile'
     login_url = '/'
 
 
@@ -255,3 +283,18 @@ class changePass(LoginRequiredMixin, PasswordChangeView):
     template_name = 'user/changePass.html'
     success_url = '/profile'
     login_url = '/'
+
+
+class ChangeUser(LoginRequiredMixin, UpdateView):
+    model = models.AdvUser
+    template_name = 'user/user_edit.html'
+    form_class = forms.edit_user_form
+    success_url = '/profile'
+    login_url = '/'
+    pk_url_kwarg = id
+
+    def get_object(self, queryset=None):
+        if not queryset:
+            queryset = self.get_queryset()
+        pk = self.kwargs.get('pk')
+        return get_object_or_404(queryset, pk=pk, username=self.request.user.username)

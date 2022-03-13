@@ -18,5 +18,6 @@ urlpatterns = [
    path('requisites_add', views.requisites_add.as_view(), name="requisites_add"),
    path('requisites_edit/<int:pk>', views.ChangeRequisites.as_view(), name="ChangeRequisites"),
    path('changePass', views.changePass.as_view(), name="changePass"),
+   path('editProfile/<int:pk>', views.ChangeUser.as_view(), name="editProfile"),
 ]
 

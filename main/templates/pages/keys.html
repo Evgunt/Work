@@ -161,7 +161,12 @@
                         <div class="cell cell--green">
                     {% endif %}
                         <div class="cell_item cell_item_img cell_item_click" data-type="num">{{key.number}}</div>
-                        <div class="cell_item cell_item_click" data-type="name">{{key.name}}</div>
+                        <div class="cell_item cell_item_click" data-type="name" data-change="{{key.pk}}">{{key.name}}</div>
+                        <form method="post" data-change="{{key.pk}}">
+                            {% csrf_token %}
+                            <input type="hidden" name="pk" value="{{key.pk}}">
+                            <input type="text" name="name" data-change="{{key.pk}}" value="{{key.name}}" class="cell_item cell_item_input">
+                        </form>
                         {% if key.tariff.name != "Отсутствует" %}
                         <div class="cell_item clearfix">
                             <div class="cell_item_text"  data-type="tariff">{{key.tariff}}</div>
@@ -177,6 +182,14 @@
                             <div class="cell_item_text" data-type="date">{{key.date}}</div>
                             <div class="icon_edit"></div>
                         </div>
+                            {% else %}
+                        <div class="cell_item cell_item_empty">
+
+                        </div>
+                            <div class="cell_item cell_item_empty">
+                                <div class="cell_item_text" data-type="date"></div>
+                                <div class="icon_edit"></div>
+                            </div>
                         {% endif %}
                     </div>
                 {%endfor%}
