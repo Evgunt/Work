@@ -2,6 +2,9 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.db.models import Q
 
+
+from post_office.admin import Log, EmailTemplate, Attachment
+
 from . import models
 
 admin.site.site_header = 'Панель администрирования Ceramic 3D'
@@ -72,6 +75,10 @@ class helpMessageModel(admin.ModelAdmin):
 
 
 admin.site.unregister(Group)
+admin.site.unregister(Log)
+admin.site.unregister(EmailTemplate)
+admin.site.unregister(Attachment)
+
 admin.site.register(models.AdvUser, UserAdmin)
 admin.site.register(models.keys, keysModel)
 admin.site.register(models.tariffs, tarifModel)

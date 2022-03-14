@@ -3,10 +3,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LogoutView, PasswordChangeView
 from datetime import datetime
 
+from django.core.exceptions import ValidationError
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import CreateView, TemplateView, UpdateView
-from django.views.generic.list import ListView
 from . import forms, models, utilities
 
 
@@ -190,36 +190,35 @@ def validateKey(request):
 
 
 def password_email_form(request):
-    context = {'display': 'none'}
-    if request.method == "POST":
-        username = request.POST['username']
-        if models.AdvUser.objects.filter(username=username).exists():
-            user = models.AdvUser.objects.get(username=username)
-            utilities.send_password_notification(user)
-            context['mail'] = "Проверьте почту"
-            context['display'] = 'block'
-        else:
-            context['errors'] = "Введен неверный логин"
-    return render(request, 'user/password_email_form.html', context)
+    if request.user.is_authenticated:
+        return redirect('/keys')
+    else:
+        context = {'display': 'none'}
+        if request.method == "POST":
+            username = request.POST['username']
+            if models.AdvUser.objects.filter(Q(username=username) | Q(email=username)).exists():
+                user = models.AdvUser.objects.get(Q(username=username) | Q(email=username))
+                utilities.send_password_notification(user)
+                context['mail'] = "Проверьте почту"
+                context['display'] = 'block'
+            else:
+                context['errors'] = "Введен неверный логин"
+        return render(request, 'user/password_email_form.html', context)
 
+    # Валидация паролей
 
 def password_email(request, sign):
-    context = {}
     username = utilities.signer.unsign(sign)
     user = get_object_or_404(models.AdvUser, username=username)
-    if request.method == 'post':
-        password = request.POST['password']
-        password2 = request.POST['password2']
-        if password == password2:
-            user.set_password(password)
-            user.save()
-            template = 'user/password_change_email_done.html'
-        else:
-            context['errors'] = "Пароли не совпадают"
-    else:
-        template = 'user/password_change_email.html'
+    password = utilities.generate_password()
+    user.set_password(password)
+    user.save()
+    context = {'user': username, 'password': password}
+    return render(request, 'user/password_change_email.html', context)
 
-    return render(request, template, context)
+# class password_email(PasswordResetConfirmView):
+#     template_name = 'user/password_change_email.html'
+#     success_url = '/'
 
 
 class checks(LoginRequiredMixin, CreateView):

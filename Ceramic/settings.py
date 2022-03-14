@@ -158,17 +158,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_HOST = 'smtp.yandex.ru'
-EMAIL_HOST_USER = ""
-EMAIL_HOST_PASSWORD = ''
-EMAIL_BACKEND = 'post_office.EmailBackend'
-EMAIL_PORT = 465
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
 
-# EMAIL_USE_TLS = True
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_HOST_USER = 'despair.keeps@gmail.com'
-# EMAIL_HOST_PASSWORD = 'DesKepUs01'
-# EMAIL_PORT = 587
-# EMAIL_BACKEND = 'post_office.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'despair.keeps@gmail.com'
+EMAIL_HOST_PASSWORD = 'wjanribabquczyvg'
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_BACKEND = 'post_office.EmailBackend'
+EMAIL_USE_TLS = True
+
