@@ -89,6 +89,6 @@ class UploadFileForm(forms.ModelForm):
 class edit_user_form(forms.ModelForm):
     class Meta:
         model = AdvUser
-        fields = ('email', 'first_name', 'region', 'time', 'language', 'phone')
+        fields = ('email', 'first_name', 'time', 'phone')
 
 

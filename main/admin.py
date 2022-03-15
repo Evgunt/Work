@@ -11,17 +11,25 @@ admin.site.site_header = 'Панель администрирования Cerami
 
 
 class UserAdmin(admin.ModelAdmin):
-    fields = [('email', 'phone'), 'first_name',  'send_messages',
-              ('region', 'time', 'language')]
+    fields = ['email', 'phone', 'first_name', 'time']
 
     def has_add_permission(self, request):
-        return False
+        if request.user.username != 'root':
+            return False
+        else:
+            return True
 
     def has_change_permission(self, request, obj=None):
-        return False
+        if request.user.username != 'root':
+            return False
+        else:
+            return True
 
     def has_delete_permission(self, request, obj=None):
-        return False
+        if request.user.username != 'root':
+            return False
+        else:
+            return True
 
     def get_queryset(self, request):
         qs = super().get_queryset(request)
@@ -55,23 +63,38 @@ class requisitesModel(admin.ModelAdmin):
               'docs', ('bank', 'checking', 'bic', 'checkingCo'), 'ogrn', 'owner', 'type']
 
     def has_add_permission(self, request):
-        return False
+        if request.user.username != 'root':
+            return False
+        else:
+            return True
 
     def has_change_permission(self, request, obj=None):
-        return False
+        if request.user.username != 'root':
+            return False
+        else:
+            return True
 
     def has_delete_permission(self, request, obj=None):
-        return False
+        if request.user.username != 'root':
+            return False
+        else:
+            return True
 
 
 class helpMessageModel(admin.ModelAdmin):
     inlines = (help_files,)
 
     def has_change_permission(self, request, obj=None):
-        return False
+        if request.user.username != 'root':
+            return False
+        else:
+            return True
 
     def has_add_permission(self, request):
-        return False
+        if request.user.username != 'root':
+            return False
+        else:
+            return True
 
 
 admin.site.unregister(Group)

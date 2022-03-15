@@ -29,7 +29,9 @@
         </a>
     </nav>
     <div class="page_right">
+        <a href="//ru.ceramic3d.com/" target="_blank">
             <img class="page_logo" src="{% static 'media/logo.png' %}" alt="logo">
+        </a>
             <div class="clear"></div>
             <h1 class="page_title">Изменение профиля</h1>
         <div class="clear"></div>
@@ -56,14 +58,6 @@
                 <label for="phone2">
                     <input type="text" id="phone2" name="phone" class="inputMain" required value="{{form.phone.value}}">
                     <div class="help_text">{{form.errors.phone}}</div>
-                </label>
-            </div>
-            <div class="clear"></div>
-            <div class="changePinCode">
-                <p>Регион</p>
-                <label for="region">
-                    <input type="text" id="region" name="region" class="inputMain" required value="{{form.region.value}}">
-                    <div class="help_text">{{form.errors.region}}</div>
                 </label>
             </div>
             <div class="clear"></div>
@@ -107,17 +101,6 @@
                 </label>
             </div>
             <div class="clear"></div>
-            <div class="changePinCode">
-                <p>Язык</p>
-                <label for="language">
-                    <select name="language" id="language" class="profile_select" data-value="{{form.language.value}}">
-                        <option value="Русский">Русский</option>
-                        <option value="Англиский">Англиский</option>
-                    </select>
-                    <div class="help_text">{{form.errors.language}}</div>
-                </label>
-            </div>
-            {{form.errors}}
             <div class="changePass">
                 <input type="submit" class="kyesButBut kyesButButWhite" value="ИЗМЕНИТЬ">
             </div>

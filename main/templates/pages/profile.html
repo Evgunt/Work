@@ -30,7 +30,9 @@
     </nav>
     <div class="page_right">
         <section class="section_page">
-            <img class="page_logo" src="{% static 'media/logo.png' %}" alt="logo">
+            <a href="//ru.ceramic3d.com/" target="_blank">
+                <img class="page_logo" src="{% static 'media/logo.png' %}" alt="logo">
+            </a>
             <div class="clear"></div>
             <h1 class="page_title">Профиль</h1>
             <div class="profile">
@@ -43,20 +45,6 @@
                 <div class="centerMail">
                     <div>{{user.email}}</div>
                     <div>На этот адрес приходят важные уведомления, ответы тех. поддержки и платежные документы</div>
-                </div>
-            </div>
-            <div class="clear"></div>
-            <div class="mainProfileTwo">
-                <div class="leftMail">Уведомления</div>
-                <div class="centerMail">
-                    <div class="tarif_butt">
-                        {% if user.send_messages %}
-                            <input type='checkbox' checked class='tarif_butt-switch' id='checkbox-1'>
-                        {% else %}
-                            <input type='checkbox' class='tarif_butt-switch' id='checkbox-1'>
-                        {% endif %}
-                        <label for='checkbox-1'></label>
-                    </div>
                 </div>
             </div>
             <div class="clear"></div>
@@ -74,24 +62,10 @@
                 </div>
             </div>
             <div class="clear"></div>
-            <div class="mainProfileFive">
-                <div class="leftMail">Регион</div>
-                <div class="centerMail">
-                    <div>{{user.region}}</div>
-                </div>
-            </div>
-            <div class="clear"></div>
             <div class="mainProfileSix">
                 <div class="leftMail">Часовой пояс</div>
                 <div class="centerMail">
                     <div>{{user.time}}</div>
-                </div>
-            </div>
-            <div class="clear"></div>
-            <div class="mainProfileSeven">
-                <div class="leftMail">Язык</div>
-                <div class="centerMail">
-                    <div>{{user.language}}</div>
                 </div>
             </div>
             <div class="clear"></div>

@@ -205,7 +205,6 @@ def password_email_form(request):
                 context['errors'] = "Введен неверный логин"
         return render(request, 'user/password_email_form.html', context)
 
-    # Валидация паролей
 
 def password_email(request, sign):
     username = utilities.signer.unsign(sign)
@@ -215,10 +214,6 @@ def password_email(request, sign):
     user.save()
     context = {'user': username, 'password': password}
     return render(request, 'user/password_change_email.html', context)
-
-# class password_email(PasswordResetConfirmView):
-#     template_name = 'user/password_change_email.html'
-#     success_url = '/'
 
 
 class checks(LoginRequiredMixin, CreateView):

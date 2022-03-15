@@ -42,7 +42,9 @@
     </nav>
     <div class="page_right">
         <section class="section_page">
-            <img class="page_logo" src="{% static 'media/logo.png' %}" alt="logo">
+            <a href="//ru.ceramic3d.com/" target="_blank">
+                <img class="page_logo" src="{% static 'media/logo.png' %}" alt="logo">
+            </a>
             <div class="clear"></div>
             <h1 class="page_title">Новый договор</h1>
             <form method="post">
@@ -156,7 +158,8 @@
                     </label>
                     <div class="clear"></div>
                     <label for="docsTwo" class="checkbox_container">
-                        Я ознакомился с политикой конфидециальности и даю согласие на обработку персональных данных
+                        Я ознакомился с политикой конфиденциальности и даю согласие на
+                        <a href="//ru.ceramic3d.com/include/licenses_detail.php" target="_blank">обработку персональных данных</a>
                         <input id="docsTwo" name="type" type="checkbox" name="polit" class="agreementConditionsInput" required>
                         <span class="checkmark"></span>
                     </label>

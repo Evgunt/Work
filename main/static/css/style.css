@@ -403,7 +403,7 @@ body, html, main
     width: 230px;
     padding: 95px 0 0 15px;
     color: #fff;
-    float: left;
+    position: fixed;
     min-height: 100%;
 }
 .nav_item
@@ -513,7 +513,6 @@ body, html, main
 .page_right
 {
     padding: 45px;
-    padding-bottom: 0;
     padding-right: 0;
     float: right;
     width: 1170px;
@@ -1825,6 +1824,10 @@ input[type="checkbox"].tarif_butt-switch:checked + label:before {
 {
     opacity: 0.8;
 }
+.mainAgreementConditions .checkbox_container a:hover
+{
+    text-decoration: underline;
+}
 .orangeButt input {
     margin-top: 24px;
     border: none;
@@ -1896,7 +1899,7 @@ input[type="checkbox"].tarif_butt-switch:checked + label:before {
     margin-right: 110px;
 }
 .mainProfileThree {
-    margin-top: 80px;
+    margin-top: 50px;
 }
 .mainProfileThree div {
     float: left;
@@ -1913,7 +1916,7 @@ input[type="checkbox"].tarif_butt-switch:checked + label:before {
     margin-right: 196px;
 }
 .mainProfileFour {
-    margin-top: 84px;
+    margin-top: 50px;
 }
 .mainProfileFour div {
     float: left;
@@ -1927,7 +1930,7 @@ input[type="checkbox"].tarif_butt-switch:checked + label:before {
     margin-right: 145px;
 }
 .mainProfileFive {
-    margin-top: 80px;
+    margin-top: 50px;
 }
 .mainProfileFive div {
     float: left;
@@ -1940,7 +1943,7 @@ input[type="checkbox"].tarif_butt-switch:checked + label:before {
     font-size: 20px;
 }
 .mainProfileSix {
-    margin-top: 80px;
+    margin-top: 50px;
 }
 .mainProfileSix div {
     float: left;
@@ -1954,7 +1957,7 @@ input[type="checkbox"].tarif_butt-switch:checked + label:before {
     margin-right: 232px;
 }
 .mainProfileSeven {
-    margin-top: 80px;
+    margin-top: 50px;
 }
 .mainProfileSeven div {
     float: left;

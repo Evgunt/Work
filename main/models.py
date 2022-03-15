@@ -4,11 +4,11 @@ from django.contrib.auth.models import AbstractUser
 
 
 class AdvUser(AbstractUser):
-    send_messages = models.BooleanField(default=True, verbose_name='Уведомления')
+    # send_messages = models.BooleanField(default=True, verbose_name='Уведомления')
     phone = models.CharField(default="", max_length=300, verbose_name='Телефон')
-    region = models.CharField(default="", max_length=300, verbose_name='Region')
+    # region = models.CharField(default="", max_length=300, verbose_name='Region')
     time = models.CharField(default="", max_length=300, verbose_name='Часовой пояс')
-    language = models.CharField(default="", max_length=300, verbose_name='Язык')
+    # language = models.CharField(default="", max_length=300, verbose_name='Язык')
     personal = models.BooleanField(default=True, blank=False)
     key = models.CharField(default="", max_length=300)
 

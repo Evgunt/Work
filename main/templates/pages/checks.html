@@ -30,7 +30,9 @@
     </nav>
     <div class="page_right">
         <section class="section_page" data-id="3" style="display: block;">
-            <img class="page_logo" src="{% static 'media/logo.png' %}" alt="logo">
+            <a href="//ru.ceramic3d.com/" target="_blank">
+                <img class="page_logo" src="{% static 'media/logo.png' %}" alt="logo">
+            </a>
             <div class="clear"></div>
             <h1 class="page_title">Счета</h1>
             {% if not list_checks %}
@@ -54,7 +56,10 @@
                     <div class="tableCell">{{checks.date}}</div>
                     <div class="tableCell" data-type="summ_js">{{checks.sum}}</div>
                     <div class="tableCell">{{checks.status}}</div>
-                    <a href="{{checks.docs}}" class="tableCell tabelCellArrow"></a>
+                    {% if checks.docs != '' %}
+                        <a target="blank" href="{{checks.docs}}" class="tableCell tabelCellArrow"></a>
+                    {%endif%}
+                    {% if checks.pay != '' %}
                     <div class="tabelCellUnion_parent">
                         <form method="post" data-form="{{checks.pk}}" enctype="multipart/form-data">
                             <input type="hidden" name="pk" value="{{checks.pk}}">
@@ -65,13 +70,16 @@
                         {% if checks.pay == '' %}
                         <div class="tabelCellUnion_text">Файл не выбран</div>
                         {% else %}
-                        <a href="{{checks.pay}}" class="tabelCellUnion_text">
+                        <a target="blank" href="{{checks.pay}}" class="tabelCellUnion_text">
                             Файл добавлен.
                             <div>Скачать</div>
                         </a>
                         {% endif %}
                     </div>
-                    <a href="{{checks.upd}}" class="tableCell tabelCellArrow"></a>
+                    {%endif%}
+                    {% if checks.upd != '' %}
+                    <a target="blank" href="{{checks.upd}}" class="tableCell tabelCellArrow"></a>
+                    {%endif%}
                 </div>
                 {% endfor %}
             {%endif%}

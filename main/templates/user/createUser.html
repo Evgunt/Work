@@ -4,7 +4,9 @@
 <div class="center clearfix">
     <img class="main_left" src="{% static 'media/main_img.png' %}" alt="mainImg">
     <div class="main_right">
-        <img class="main_logo" src="{% static 'media/logo.png' %}" alt="logo">
+        <a href="//ru.ceramic3d.com/" target="_blank">
+            <img class="main_logo" src="{% static 'media/logo.png' %}" alt="logo">
+        </a>
         <div class="main_right_title">Облачный рендер Ceramic 3D<span>Личный кабинет</span></div>
         <form class="mainForm" method="POST" id="registr">
             {% csrf_token %}
@@ -37,7 +39,7 @@
                 <label class="checkbox_container" for="personal">
                     Нажимая на кнопку “Продолжить регистрацию”, я даю согласие на
                     обработку персональных данных и соглашаюсь с условиями
-                    <a href="#">обработки персональных данных</a>
+                    <a target="_blank" href="//ru.ceramic3d.com/include/licenses_detail.php">обработки персональных данных</a>
                     <input type="checkbox" name="personal" required id="personal">
                     <span class="checkmark"></span>
                 </label>
